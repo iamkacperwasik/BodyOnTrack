@@ -1,28 +1,45 @@
 import type {NextPage} from 'next';
+import {useBodyInfoStore} from '../stores/BodyInfo';
 
 const Home: NextPage = () => {
+  const bodyInfo = useBodyInfoStore();
+
   return (
     <div className='p-5 flex gap-4 flex-col'>
       <div>
         <p>Age:</p>
-        <input type='number' className='border-[1px]' />
+        <input
+          type='number'
+          className='border-[1px]'
+          value={bodyInfo.age || ''}
+          onChange={({target}) => bodyInfo.setAge(+target.value)}
+        />
       </div>
       <div>
         {/* TODO: switch  */}
         <p>Weight (kg/lb)</p>
-        <input type='number' className='border-[1px]' />
+        <input
+          type='number'
+          className='border-[1px]'
+          value={bodyInfo.weight || ''}
+          onChange={({target}) => bodyInfo.setWeight(+target.value)}
+        />
       </div>
       <div>
         {/* TODO: switch  */}
-        <p>Height (m/ft)</p>
-        <input type='number' className='border-[1px]' />
+        <p>Height (cm/ft)</p>
+        <input
+          type='number'
+          className='border-[1px]'
+          value={bodyInfo.height || ''}
+          onChange={({target}) => bodyInfo.setHeight(+target.value)}
+        />
       </div>
       <div>
         <p>Gender</p>
         <div>
-          {/* TODO: switch  */}
-          <button>M</button>
-          <button>F</button>
+          <button onClick={() => bodyInfo.switchGender('M')}>M</button>
+          <button onClick={() => bodyInfo.switchGender('F')}>F</button>
         </div>
       </div>
     </div>
