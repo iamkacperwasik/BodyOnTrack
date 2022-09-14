@@ -1,18 +1,35 @@
-import {FC} from 'react';
+import {FC, useEffect, useState} from 'react';
 import {useBodyInfoStore} from '../stores/BodyInfo';
 
 const Form: FC = () => {
-  const bodyInfo = useBodyInfoStore();
+  const {age, height, weight, setAge, setHeight, setWeight, switchGender, validate} =
+    useBodyInfoStore();
+
+  const [formError, setFormError] = useState<null | string>(null);
+
+  useEffect(() => {
+    if (age === null || height === null || weight === null) {
+      setFormError(null);
+
+      return;
+    }
+
+    validate()
+      .then(() => setFormError(null))
+      .catch(({errors: [error]}) => {
+        setFormError(error);
+      });
+  }, [age, height, weight, validate]);
 
   return (
-    <div className='p-5 flex gap-4 flex-col'>
+    <div className='flex gap-4 flex-col'>
       <div>
         <p>Age:</p>
         <input
           type='number'
           className='border-[1px]'
-          value={bodyInfo.age || ''}
-          onChange={({target}) => bodyInfo.setAge(+target.value)}
+          value={age === null ? '' : age}
+          onChange={({target}) => setAge(+target.value)}
         />
       </div>
       <div>
@@ -21,8 +38,8 @@ const Form: FC = () => {
         <input
           type='number'
           className='border-[1px]'
-          value={bodyInfo.weight || ''}
-          onChange={({target}) => bodyInfo.setWeight(+target.value)}
+          value={weight === null ? '' : weight}
+          onChange={({target}) => setWeight(+target.value)}
         />
       </div>
       <div>
@@ -31,15 +48,20 @@ const Form: FC = () => {
         <input
           type='number'
           className='border-[1px]'
-          value={bodyInfo.height || ''}
-          onChange={({target}) => bodyInfo.setHeight(+target.value)}
+          value={height === null ? '' : height}
+          onChange={({target}) => setHeight(+target.value)}
         />
       </div>
+      {formError && (
+        <div>
+          <p className='text-red-500'>{formError}</p>
+        </div>
+      )}
       <div>
         <p>Gender</p>
         <div>
-          <button onClick={() => bodyInfo.switchGender('M')}>M</button>
-          <button onClick={() => bodyInfo.switchGender('F')}>F</button>
+          <button onClick={() => switchGender('M')}>M</button>
+          <button onClick={() => switchGender('F')}>F</button>
         </div>
       </div>
     </div>
