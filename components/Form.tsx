@@ -1,25 +1,29 @@
-import {FC, useEffect, useState} from 'react';
+import {FC, useEffect} from 'react';
 import {useBodyInfoStore} from '../stores/BodyInfo';
 
 const Form: FC = () => {
-  const {age, height, weight, setAge, setHeight, setWeight, switchGender, validate} =
-    useBodyInfoStore();
-
-  const [formError, setFormError] = useState<null | string>(null);
+  const {
+    age,
+    height,
+    weight,
+    setAge,
+    setHeight,
+    setWeight,
+    switchGender,
+    bodyInfoError,
+    setBodyInfoError,
+    validate,
+  } = useBodyInfoStore();
 
   useEffect(() => {
     if (age === null || height === null || weight === null) {
-      setFormError(null);
+      setBodyInfoError(null);
 
       return;
     }
 
-    validate()
-      .then(() => setFormError(null))
-      .catch(({errors: [error]}) => {
-        setFormError(error);
-      });
-  }, [age, height, weight, validate]);
+    validate();
+  }, [age, height, weight, setBodyInfoError, validate]);
 
   return (
     <div className='flex gap-4 flex-col'>
@@ -52,9 +56,9 @@ const Form: FC = () => {
           onChange={({target}) => setHeight(+target.value)}
         />
       </div>
-      {formError && (
+      {bodyInfoError && (
         <div>
-          <p className='text-red-500'>{formError}</p>
+          <p className='text-red-500'>{bodyInfoError}</p>
         </div>
       )}
       <div>

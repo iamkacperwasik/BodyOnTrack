@@ -13,6 +13,8 @@ type BodyInfoStore = {
   switchGender(gender: 'M' | 'F'): void;
 
   validate(): Promise<any>;
+  setBodyInfoError(error: null | string): void;
+  bodyInfoError: null | string;
 };
 
 export const useBodyInfoStore = create<BodyInfoStore>((set, get) => ({
@@ -27,7 +29,20 @@ export const useBodyInfoStore = create<BodyInfoStore>((set, get) => ({
   switchGender: (gender) => set((state) => ({...state, gender})),
 
   //@ts-ignore
-  validate: () => bodyInfoSchema.validate(get()),
+  validate: () => {
+    bodyInfoSchema
+      .validate(get())
+      .then(() => {
+        get().setBodyInfoError(null);
+      })
+      .catch(({errors: [error]}) => {
+        get().setBodyInfoError(error);
+      });
+  },
+  setBodyInfoError(error: null | string) {
+    set((state) => ({...state, bodyInfoError: error}));
+  },
+  bodyInfoError: null,
 }));
 
 export const bodyInfoSchema = yup.object().shape({
