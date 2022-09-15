@@ -10,7 +10,6 @@ const Form: FC = () => {
     setHeight,
     setWeight,
     switchGender,
-    bodyInfoError,
     setBodyInfoError,
     validate,
   } = useBodyInfoStore();
@@ -56,11 +55,6 @@ const Form: FC = () => {
           onChange={({target}) => setHeight(+target.value)}
         />
       </div>
-      {bodyInfoError && (
-        <div>
-          <p className='text-red-500'>{bodyInfoError}</p>
-        </div>
-      )}
       <div>
         <p>Gender</p>
         <div>
