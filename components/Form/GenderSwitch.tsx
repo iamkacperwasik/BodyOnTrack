@@ -1,14 +1,20 @@
 import {useBodyInfoStore} from '../../stores/BodyInfo';
 
 const GenderSwitch = () => {
-  const {switchGender} = useBodyInfoStore();
+  const {gender, switchGender} = useBodyInfoStore();
+
+  const is_male = gender === 'M';
 
   return (
     <div>
       <p>Gender</p>
-      <div>
-        <button onClick={() => switchGender('M')}>M</button>
-        <button onClick={() => switchGender('F')}>F</button>
+      <div className='flex gap-2'>
+        <button className={is_male ? 'underline' : ''} onClick={() => switchGender('M')}>
+          M
+        </button>
+        <button className={!is_male ? 'underline' : ''} onClick={() => switchGender('F')}>
+          F
+        </button>
       </div>
     </div>
   );
