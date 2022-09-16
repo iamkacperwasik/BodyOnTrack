@@ -2,12 +2,22 @@ import {FC} from 'react';
 import {useBodyInfoStore} from '../../stores/BodyInfo';
 
 const WeightInput: FC = () => {
-  const {weight, setWeight} = useBodyInfoStore();
+  const {weight, setWeight, metric, switchMetric} = useBodyInfoStore();
 
   return (
     <div>
-      {/* TODO: switch  */}
-      <p>Weight (kg/lb)</p>
+      <p>
+        Weight (
+        <span className={`pointer ${metric && 'underline'}`} onClick={() => switchMetric(true)}>
+          kg
+        </span>
+        /
+        <span className={`pointer ${!metric && 'underline'}`} onClick={() => switchMetric(false)}>
+          lb
+        </span>
+        )
+      </p>
+
       <input
         type='number'
         className='border-[1px]'

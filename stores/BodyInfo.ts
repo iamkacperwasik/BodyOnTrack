@@ -15,6 +15,9 @@ type BodyInfoStore = {
   validate(): Promise<any>;
   setBodyInfoError(error: null | string): void;
   bodyInfoError: null | string;
+
+  metric: boolean;
+  switchMetric(val: boolean): void;
 };
 
 export const useBodyInfoStore = create<BodyInfoStore>((set, get) => ({
@@ -43,6 +46,9 @@ export const useBodyInfoStore = create<BodyInfoStore>((set, get) => ({
     set((state) => ({...state, bodyInfoError: error}));
   },
   bodyInfoError: null,
+
+  metric: true,
+  switchMetric: (val: boolean) => set((state) => ({...state, metric: val})),
 }));
 
 export const bodyInfoSchema = yup.object().shape({

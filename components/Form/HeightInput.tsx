@@ -2,12 +2,22 @@ import {FC} from 'react';
 import {useBodyInfoStore} from '../../stores/BodyInfo';
 
 const HeightInput: FC = () => {
-  const {height, setHeight} = useBodyInfoStore();
+  const {height, setHeight, metric, switchMetric} = useBodyInfoStore();
 
   return (
     <div>
-      {/* TODO: switch  */}
-      <p>Height (cm/ft)</p>
+      <p>
+        Height (
+        <span className={`pointer ${metric && 'underline'}`} onClick={() => switchMetric(true)}>
+          cm
+        </span>
+        /
+        <span className={`pointer ${!metric && 'underline'}`} onClick={() => switchMetric(false)}>
+          ft
+        </span>
+        )
+      </p>
+
       <input
         type='number'
         className='border-[1px]'
