@@ -7,9 +7,9 @@ type BodyInfoStore = {
   height: number | null;
   gender: "M" | "F";
 
-  setAge(age: number): void;
-  setWeight(weight: number): void;
-  setHeight(height: number): void;
+  setAge(age: number | null): void;
+  setWeight(weight: number | null): void;
+  setHeight(height: number | null): void;
   switchGender(gender: "M" | "F"): void;
 
   validate(): Promise<any>;
