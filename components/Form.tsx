@@ -1,15 +1,17 @@
-import {FC} from 'react';
-import useBodyInfoValidation from '../hooks/useBodyInfoValidation';
-import AgeInput from './Form/AgeInput';
-import GenderSwitch from './Form/GenderSwitch';
-import HeightInput from './Form/HeightInput';
-import WeightInput from './Form/WeightInput';
+import { FC } from "react";
+
+import AgeInput from "components/Form/AgeInput";
+import GenderSwitch from "components/Form/GenderSwitch";
+import HeightInput from "components/Form/HeightInput";
+import WeightInput from "components/Form/WeightInput";
+
+import useBodyInfoValidation from "hooks/useBodyInfoValidation";
 
 const Form: FC = () => {
   useBodyInfoValidation();
 
   return (
-    <div className='flex gap-4 flex-col'>
+    <div className="flex gap-4 flex-col">
       <AgeInput />
       <WeightInput />
       <HeightInput />

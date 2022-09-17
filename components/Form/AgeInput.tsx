@@ -1,17 +1,18 @@
-import {FC} from 'react';
-import {useBodyInfoStore} from '../../stores/BodyInfo';
+import { FC } from "react";
+
+import { useBodyInfoStore } from "stores/BodyInfo";
 
 const AgeInput: FC = () => {
-  const {age, setAge} = useBodyInfoStore();
+  const { age, setAge } = useBodyInfoStore();
 
   return (
     <div>
       <p>Age:</p>
       <input
-        type='number'
-        className='border-[1px]'
-        value={age === null ? '' : age}
-        onChange={({target}) => setAge(+target.value)}
+        type="number"
+        className="border-[1px]"
+        value={age === null ? "" : age}
+        onChange={({ target }) => setAge(+target.value)}
       />
     </div>
   );

@@ -1,8 +1,10 @@
-import {useEffect} from 'react';
-import {useBodyInfoStore} from '../stores/BodyInfo';
+import { useEffect } from "react";
+
+import { useBodyInfoStore } from "stores/BodyInfo";
 
 const useBodyInfoValidation = () => {
-  const {age, height, weight, setBodyInfoError, validate} = useBodyInfoStore();
+  const { age, height, weight, setBodyInfoError, validate } =
+    useBodyInfoStore();
 
   useEffect(() => {
     if (age === null || height === null || weight === null) {
