@@ -1,9 +1,9 @@
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Else, If, Then } from "react-if";
 
 import { useBodyInfoStore } from "stores/BodyInfo";
 
-const WeightInput: FC = () => {
+const WeightInput = () => {
   const { weight, setWeight, metric, switchMetric } = useBodyInfoStore();
 
   const [lbs, setLbs] = useState<null | number>();

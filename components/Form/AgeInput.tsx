@@ -1,8 +1,6 @@
-import { FC } from "react";
-
 import { useBodyInfoStore } from "stores/BodyInfo";
 
-const AgeInput: FC = () => {
+const AgeInput = () => {
   const { age, setAge } = useBodyInfoStore();
 
   return (

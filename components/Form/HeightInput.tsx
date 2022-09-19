@@ -1,9 +1,9 @@
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Else, If, Then } from "react-if";
 
 import { useBodyInfoStore } from "stores/BodyInfo";
 
-const HeightInput: FC = () => {
+const HeightInput = () => {
   const { height, setHeight, metric, switchMetric } = useBodyInfoStore();
 
   const [inches, setInches] = useState<null | number>();
