@@ -50,6 +50,7 @@ const HeightInput: FC = () => {
             value={height === null ? "" : height}
             onChange={({ target }) => setHeight(+target.value)}
             placeholder="cm"
+            min={1}
           />
         </Then>
         <Else>
@@ -59,6 +60,7 @@ const HeightInput: FC = () => {
             value={feet === null ? "" : feet}
             onChange={({ target }) => setFeet(+target.value)}
             placeholder="ft"
+            min={1}
           />
           <input
             type="number"

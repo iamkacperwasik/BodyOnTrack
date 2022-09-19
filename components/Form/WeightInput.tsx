@@ -50,6 +50,7 @@ const WeightInput: FC = () => {
             value={weight === null ? "" : weight}
             onChange={({ target }) => setWeight(+target.value)}
             placeholder="kg"
+            min={1}
           />
         </Then>
         <Else>
@@ -59,6 +60,7 @@ const WeightInput: FC = () => {
             value={lbs === null ? "" : lbs}
             onChange={({ target }) => setLbs(+target.value)}
             placeholder="lbs"
+            min={1}
           />
         </Else>
       </If>

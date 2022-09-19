@@ -13,6 +13,7 @@ const AgeInput: FC = () => {
         className="border-[1px]"
         value={age === null ? "" : age}
         onChange={({ target }) => setAge(+target.value)}
+        min={1}
       />
     </div>
   );
