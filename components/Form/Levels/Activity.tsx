@@ -1,7 +1,7 @@
-import { useBodyInfoStore } from "stores/BodyInfo";
+import { useCalculationsStore } from "stores/CalculationsStore";
 
 const ActivityLevel = () => {
-  const { activityLevel, setActivityLevel } = useBodyInfoStore();
+  const { activityLevel, setActivityLevel } = useCalculationsStore();
 
   return (
     <table className="mt-4">
