@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useCalculationsStore } from "stores/CalculationsStore";
 
 const DeficitLevel = () => {
-  const { goal, setGoal, setGoalLevel, goalLevel } = useCalculationsStore();
+  const { goal, setGoal, setGoalLevel } = useCalculationsStore();
 
   const [loseWeightValue, setLoseWeightValue] = useState(0);
   const [gainWeightValue, setGainWeightValue] = useState(0);
