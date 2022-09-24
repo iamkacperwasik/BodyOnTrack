@@ -6,14 +6,14 @@ import { useBodyInfoStore } from "stores/BodyInfo";
 const HeightInput = () => {
   const { height, setHeight, metric, switchMetric } = useBodyInfoStore();
 
-  const [inches, setInches] = useState<null | number>();
-  const [feet, setFeet] = useState<null | number>();
+  const [inches, setInches] = useState<null | number>(null);
+  const [feet, setFeet] = useState<null | number>(null);
 
   useEffect(() => {
-    if (feet !== null) {
-      setHeight(feet! / 0.032808 + (inches! ? inches! * 2.54 : 0));
+    if (!metric && feet !== null) {
+      return setHeight(feet / 0.032808 + (inches || 0) * 2.54);
     }
-  }, [feet, inches, setFeet, setInches, setHeight]);
+  }, [feet, inches, setFeet, setInches, setHeight, metric]);
 
   // clear inputs when switching metric/imperial
   useEffect(() => {
@@ -47,7 +47,7 @@ const HeightInput = () => {
           <input
             type="number"
             className="border-[1px]"
-            value={height === null ? "" : height}
+            value={height === null || height === 0 ? "" : height}
             onChange={({ target }) => setHeight(+target.value)}
             placeholder="cm"
             min={1}
@@ -57,7 +57,7 @@ const HeightInput = () => {
           <input
             type="number"
             className="border-[1px]"
-            value={feet === null ? "" : feet}
+            value={feet === null || feet === 0 ? "" : feet}
             onChange={({ target }) => setFeet(+target.value)}
             placeholder="ft"
             min={1}
@@ -65,7 +65,7 @@ const HeightInput = () => {
           <input
             type="number"
             className="border-[1px]"
-            value={inches === null ? "" : inches}
+            value={inches === null || inches === 0 ? "" : inches}
             onChange={({ target }) => setInches(+target.value)}
             placeholder="inch"
             min={0}

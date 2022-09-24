@@ -9,7 +9,7 @@ const AgeInput = () => {
       <input
         type="number"
         className="border-[1px]"
-        value={age === null ? "" : age}
+        value={age === null || age === 0 ? "" : age}
         onChange={({ target }) => setAge(+target.value)}
         min={1}
       />

@@ -6,14 +6,10 @@ import { useBodyInfoStore } from "stores/BodyInfo";
 const WeightInput = () => {
   const { weight, setWeight, metric, switchMetric } = useBodyInfoStore();
 
-  const [lbs, setLbs] = useState<null | number>();
+  const [lbs, setLbs] = useState<null | number>(null);
 
   useEffect(() => {
-    if (lbs !== null) {
-      setWeight(lbs! * 0.45359237);
-
-      return;
-    }
+    if (lbs !== null) return setWeight(lbs * 0.45359237);
   }, [lbs, setLbs, setWeight]);
 
   // clear inputs when switching metric/imperial
@@ -47,7 +43,7 @@ const WeightInput = () => {
           <input
             type="number"
             className="border-[1px]"
-            value={weight === null ? "" : weight}
+            value={weight === null || weight === 0 ? "" : weight}
             onChange={({ target }) => setWeight(+target.value)}
             placeholder="kg"
             min={1}
@@ -57,7 +53,7 @@ const WeightInput = () => {
           <input
             type="number"
             className="border-[1px]"
-            value={lbs === null ? "" : lbs}
+            value={lbs === null || lbs === 0 ? "" : lbs}
             onChange={({ target }) => setLbs(+target.value)}
             placeholder="lbs"
             min={1}
