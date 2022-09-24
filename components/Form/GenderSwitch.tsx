@@ -13,13 +13,13 @@ const GenderSwitch = () => {
           className={isMale ? "underline" : ""}
           onClick={() => switchGender("M")}
         >
-          M
+          Male
         </button>
         <button
           className={!isMale ? "underline" : ""}
           onClick={() => switchGender("F")}
         >
-          F
+          Female
         </button>
       </div>
     </div>
