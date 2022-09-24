@@ -19,7 +19,6 @@ const DeficitLevel = () => {
     <table className="mt-4">
       <tr className="text-left">
         <th>Goal</th>
-        <th className="pl-4">Value</th>
       </tr>
 
       <tr>
@@ -29,7 +28,6 @@ const DeficitLevel = () => {
         >
           Maintain weight
         </td>
-        <td className="pl-4">-</td>
       </tr>
 
       <tr>
@@ -40,6 +38,7 @@ const DeficitLevel = () => {
           Lose weight
         </td>
         <td className="pl-4">
+          <span>with </span>
           <input
             type="number"
             className="border-[1px] w-min"
@@ -48,7 +47,7 @@ const DeficitLevel = () => {
             max={50}
             onChange={({ target }) => setLoseWeightValue(+target.value)}
           />
-          %
+          <span>% deficit</span>
         </td>
       </tr>
 
@@ -60,6 +59,7 @@ const DeficitLevel = () => {
           Gain weight
         </td>
         <td className="pl-4">
+          <span>with </span>
           <input
             type="number"
             className="border-[1px] w-min"
@@ -68,7 +68,7 @@ const DeficitLevel = () => {
             max={50}
             onChange={({ target }) => setGainWeightValue(+target.value)}
           />
-          %
+          <span>% surplus</span>
         </td>
       </tr>
     </table>
