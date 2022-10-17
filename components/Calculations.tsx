@@ -3,19 +3,19 @@ import { Case, Default, Switch, Unless } from "react-if";
 import ActivityLevel from "components/Form/Levels/Activity";
 import DeficitLevel from "components/Form/Levels/Deficit";
 
-import caloriesPerDay from "formulas/caloriesPerDay";
 import getBMR from "formulas/getBMR";
+import getCaloriesPerDay from "formulas/getCaloriesPerDay";
 
 import { useBodyInfoStore } from "stores/BodyInfo";
 import { useCalculationsStore } from "stores/CalculationsStore";
 
 const Calculations = () => {
   const { age, weight, height, gender } = useBodyInfoStore();
-  const { activityLevel, goal, goalLevel } = useCalculationsStore();
+  const { activityLevel, goal, calorieLevel } = useCalculationsStore();
 
   // const bmi = getBMI(weight!, height!);
   const bmr = getBMR(gender, weight!, height!, age!);
-  const cpd = caloriesPerDay(bmr, activityLevel);
+  const caloriesPerDay = getCaloriesPerDay(bmr, activityLevel);
 
   return (
     <Unless condition={age === null || weight === null || height === null}>
@@ -26,16 +26,22 @@ const Calculations = () => {
         <Switch>
           <Case condition={goal === "GAIN_WEIGHT"}>
             <p>
-              Calories per day: {(cpd + cpd * (goalLevel / 100)).toFixed(2)}
+              Calories per day:{" "}
+              {(caloriesPerDay + caloriesPerDay * (calorieLevel / 100)).toFixed(
+                2
+              )}
             </p>
           </Case>
           <Case condition={goal === "LOSE_WEIGHT"}>
             <p>
-              Calories per day: {(cpd - cpd * (goalLevel / 100)).toFixed(2)}
+              Calories per day:{" "}
+              {(caloriesPerDay - caloriesPerDay * (calorieLevel / 100)).toFixed(
+                2
+              )}
             </p>
           </Case>
           <Default>
-            <p>Calories per day: {cpd.toFixed(2)}</p>
+            <p>Calories per day: {caloriesPerDay.toFixed(2)}</p>
           </Default>
         </Switch>
       </div>

@@ -3,17 +3,17 @@ import { useEffect, useState } from "react";
 import { useCalculationsStore } from "stores/CalculationsStore";
 
 const DeficitLevel = () => {
-  const { goal, setGoal, setGoalLevel } = useCalculationsStore();
+  const { goal, setGoal, setCalorieLevel } = useCalculationsStore();
 
   const [loseWeightValue, setLoseWeightValue] = useState(0);
   const [gainWeightValue, setGainWeightValue] = useState(0);
 
   useEffect(() => {
-    if (goal === "LOSE_WEIGHT") return setGoalLevel(loseWeightValue);
-    if (goal === "GAIN_WEIGHT") return setGoalLevel(gainWeightValue);
+    if (goal === "LOSE_WEIGHT") return setCalorieLevel(loseWeightValue);
+    if (goal === "GAIN_WEIGHT") return setCalorieLevel(gainWeightValue);
 
     return;
-  }, [goal, setGoal, loseWeightValue, gainWeightValue, setGoalLevel]);
+  }, [goal, setGoal, loseWeightValue, gainWeightValue, setCalorieLevel]);
 
   return (
     <table className="mt-4">
