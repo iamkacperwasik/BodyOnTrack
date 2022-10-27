@@ -4,7 +4,9 @@ import ActivityLevel from "components/Form/Levels/Activity";
 import DeficitLevel from "components/Form/Levels/Deficit";
 
 import getBMR from "formulas/getBMR";
-import getCaloriesPerDay from "formulas/getCaloriesPerDay";
+import getCaloriesForActivityLevel from "formulas/getCaloriesForActivityLevel";
+
+import useCalorieGoal from "hooks/useCalorieGoal";
 
 import { useBodyInfoStore } from "stores/BodyInfo";
 import { useCalculationsStore } from "stores/CalculationsStore";
@@ -13,9 +15,9 @@ const Calculations = () => {
   const { age, weight, height, gender } = useBodyInfoStore();
   const { activityLevel, goal, calorieLevel } = useCalculationsStore();
 
-  // const bmi = getBMI(weight!, height!);
   const bmr = getBMR(gender, weight!, height!, age!);
-  const caloriesPerDay = getCaloriesPerDay(bmr, activityLevel);
+  const caloriesPerDay = getCaloriesForActivityLevel(bmr, activityLevel);
+  const calories = useCalorieGoal(goal, caloriesPerDay, calorieLevel);
 
   return (
     <Unless condition={age === null || weight === null || height === null}>
@@ -25,23 +27,13 @@ const Calculations = () => {
       <div className="mt-5">
         <Switch>
           <Case condition={goal === "GAIN_WEIGHT"}>
-            <p>
-              Calories per day:{" "}
-              {(caloriesPerDay + caloriesPerDay * (calorieLevel / 100)).toFixed(
-                2
-              )}
-            </p>
+            <p>Calories per day: {calories}</p>
           </Case>
           <Case condition={goal === "LOSE_WEIGHT"}>
-            <p>
-              Calories per day:{" "}
-              {(caloriesPerDay - caloriesPerDay * (calorieLevel / 100)).toFixed(
-                2
-              )}
-            </p>
+            <p>Calories per day: {calories}</p>
           </Case>
           <Default>
-            <p>Calories per day: {caloriesPerDay.toFixed(2)}</p>
+            <p>Calories per day: {calories}</p>
           </Default>
         </Switch>
       </div>
