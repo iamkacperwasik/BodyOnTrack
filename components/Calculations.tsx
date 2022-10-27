@@ -6,10 +6,9 @@ import DeficitLevel from "components/Form/Levels/Deficit";
 import getBMR from "formulas/getBMR";
 import getCaloriesForActivityLevel from "formulas/getCaloriesForActivityLevel";
 
+import { useBodyInfoStore } from "hooks/useBodyInfoStore";
+import { useCalculationsStore } from "hooks/useCalculationsStore";
 import useCalorieGoal from "hooks/useCalorieGoal";
-
-import { useBodyInfoStore } from "stores/BodyInfo";
-import { useCalculationsStore } from "stores/CalculationsStore";
 
 const Calculations = () => {
   const { age, weight, height, gender } = useBodyInfoStore();
