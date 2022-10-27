@@ -1,4 +1,4 @@
-import { useCalculationsStore } from "stores/CalculationsStore";
+import { useCalculationsStore } from "hooks/useCalculationsStore";
 
 const ActivityLevel = () => {
   const { activityLevel, setActivityLevel } = useCalculationsStore();

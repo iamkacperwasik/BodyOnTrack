@@ -1,4 +1,4 @@
-import { useBodyInfoStore } from "stores/BodyInfo";
+import { useBodyInfoStore } from "hooks/useBodyInfoStore";
 
 const GenderSwitch = () => {
   const { gender, switchGender } = useBodyInfoStore();

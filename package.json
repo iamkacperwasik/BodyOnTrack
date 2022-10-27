@@ -30,7 +30,6 @@
       "^components/(.*)$",
       "^formulas/(.*)$",
       "^hooks/(.*)$",
-      "^stores/(.*)$",
       "^[./]"
     ],
     "importOrderSeparation": true,

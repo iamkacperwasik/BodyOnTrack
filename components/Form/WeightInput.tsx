@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Else, If, Then } from "react-if";
 
-import { useBodyInfoStore } from "stores/BodyInfo";
+import { useBodyInfoStore } from "hooks/useBodyInfoStore";
 
 const WeightInput = () => {
   const { weight, setWeight, metric, switchMetric } = useBodyInfoStore();

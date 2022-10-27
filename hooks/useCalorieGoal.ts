@@ -7,15 +7,15 @@ const useCalorieGoal = (
 ): number => {
   const [calories, setCalories] = useState(caloriesPerDay);
 
-  useEffect(() => {});
+  useEffect(() => {
+    if (goal === "GAIN_WEIGHT")
+      setCalories(caloriesPerDay + caloriesPerDay * (calorieLevel / 100));
 
-  if (goal === "GAIN_WEIGHT")
-    setCalories(caloriesPerDay + caloriesPerDay * (calorieLevel / 100));
+    if (goal === "LOSE_WEIGHT")
+      setCalories(caloriesPerDay - caloriesPerDay * (calorieLevel / 100));
 
-  if (goal === "LOSE_WEIGHT")
-    setCalories(caloriesPerDay - caloriesPerDay * (calorieLevel / 100));
-
-  if (goal === "MAINTAIN") setCalories(caloriesPerDay);
+    if (goal === "MAINTAIN") setCalories(caloriesPerDay);
+  }, [goal, calorieLevel, caloriesPerDay]);
 
   return Number(calories.toFixed(2));
 };
