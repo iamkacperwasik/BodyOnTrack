@@ -1,7 +1,7 @@
 import { Case, Default, Switch, Unless } from "react-if";
 
-import ActivityLevel from "components/Form/Levels/Activity";
-import DeficitLevel from "components/Form/Levels/Deficit";
+import ActivityLevel from "components/Levels/Activity";
+import DeficitLevel from "components/Levels/Deficit";
 
 import getBMR from "formulas/getBMR";
 import getCaloriesForActivityLevel from "formulas/getCaloriesForActivityLevel";

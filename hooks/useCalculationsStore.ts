@@ -1,17 +1,17 @@
 import create from "zustand";
 
 type CalculationsStore = {
-  activityLevel: 1 | 2 | 3 | 4 | 5;
+  activityLevel: 0 | 1 | 2 | 3 | 4;
   goal: "MAINTAIN" | "LOSE_WEIGHT" | "GAIN_WEIGHT";
   calorieLevel: number;
 
-  setActivityLevel(level: 1 | 2 | 3 | 4 | 5): void;
+  setActivityLevel(level: 0 | 1 | 2 | 3 | 4): void;
   setGoal(goal: "MAINTAIN" | "LOSE_WEIGHT" | "GAIN_WEIGHT"): void;
   setCalorieLevel(calories: number): void;
 };
 
 export const useCalculationsStore = create<CalculationsStore>((set) => ({
-  activityLevel: 1,
+  activityLevel: 0,
   goal: "MAINTAIN",
   calorieLevel: 0,
 
