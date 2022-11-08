@@ -1,4 +1,4 @@
-import { Case, Default, Switch, Unless } from "react-if";
+import { Unless } from "react-if";
 
 import ActivityLevel from "components/Levels/Activity";
 import DeficitLevel from "components/Levels/Deficit";
@@ -24,17 +24,7 @@ const Calculations = () => {
       <DeficitLevel />
 
       <div className="mt-5">
-        <Switch>
-          <Case condition={goal === "GAIN_WEIGHT"}>
-            <p>Calories per day: {calories}</p>
-          </Case>
-          <Case condition={goal === "LOSE_WEIGHT"}>
-            <p>Calories per day: {calories}</p>
-          </Case>
-          <Default>
-            <p>Calories per day: {calories}</p>
-          </Default>
-        </Switch>
+        <p>Calories per day: {calories}</p>
       </div>
     </Unless>
   );
