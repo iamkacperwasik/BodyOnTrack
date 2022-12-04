@@ -1,4 +1,4 @@
-import { useCalculationsStore } from "hooks/useCalculationsStore";
+import useCalculationsStore from "hooks/useCalculationsStore";
 
 type ActivityLevel = [number, string];
 

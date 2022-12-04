@@ -3,7 +3,7 @@ import { Unless } from "react-if";
 import ActivityLevel from "components/Levels/Activity";
 import DeficitLevel from "components/Levels/Deficit";
 
-import { useBodyInfoStore } from "hooks/useBodyInfoStore";
+import useBodyInfoStore from "hooks/useBodyInfoStore";
 import useCalorieGoal from "hooks/useCalorieGoal";
 
 const Calculations = () => {

@@ -4,8 +4,8 @@ import { activityLevels } from "components/Levels/Activity";
 
 import getBMR from "formulas/getBMR";
 
-import { useBodyInfoStore } from "hooks/useBodyInfoStore";
-import { useCalculationsStore } from "hooks/useCalculationsStore";
+import useBodyInfoStore from "hooks/useBodyInfoStore";
+import useCalculationsStore from "hooks/useCalculationsStore";
 
 const applyActivityLevel = (bmr: number, level: 0 | 1 | 2 | 3 | 4): number => {
   const [activityLevel] = activityLevels[level];

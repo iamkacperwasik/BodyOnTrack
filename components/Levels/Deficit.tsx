@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { useCalculationsStore } from "hooks/useCalculationsStore";
+import useCalculationsStore from "hooks/useCalculationsStore";
 
 const DeficitLevel = () => {
   const { goal, setGoal, setCalorieLevel } = useCalculationsStore();

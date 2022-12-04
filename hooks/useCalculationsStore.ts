@@ -10,7 +10,7 @@ type CalculationsStore = {
   setCalorieLevel(calories: number): void;
 };
 
-export const useCalculationsStore = create<CalculationsStore>((set) => ({
+const useCalculationsStore = create<CalculationsStore>((set) => ({
   activityLevel: 0,
   goal: "MAINTAIN",
   calorieLevel: 0,
@@ -21,3 +21,5 @@ export const useCalculationsStore = create<CalculationsStore>((set) => ({
   setCalorieLevel: (calories) =>
     set((state) => ({ ...state, calorieLevel: calories })),
 }));
+
+export default useCalculationsStore;

@@ -15,7 +15,7 @@ type BodyInfoStore = {
   switchMetric(val: boolean): void;
 };
 
-export const useBodyInfoStore = create<BodyInfoStore>((set) => ({
+const useBodyInfoStore = create<BodyInfoStore>((set) => ({
   age: null,
   weight: null,
   height: null,
@@ -29,3 +29,5 @@ export const useBodyInfoStore = create<BodyInfoStore>((set) => ({
   metric: true,
   switchMetric: (val: boolean) => set((state) => ({ ...state, metric: val })),
 }));
+
+export default useBodyInfoStore;

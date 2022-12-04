@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Else, If, Then } from "react-if";
 
-import { useBodyInfoStore } from "hooks/useBodyInfoStore";
+import useBodyInfoStore from "hooks/useBodyInfoStore";
 
 const HeightInput = () => {
   const { height, setHeight, metric, switchMetric } = useBodyInfoStore();
