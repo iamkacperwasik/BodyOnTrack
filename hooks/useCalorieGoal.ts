@@ -1,16 +1,12 @@
 import { useEffect, useState } from "react";
 
-import { activityLevels } from "components/Levels/Activity";
-
 import getBMR from "formulas/getBMR";
 
 import useBodyInfoStore from "hooks/useBodyInfoStore";
 import useCalculationsStore from "hooks/useCalculationsStore";
 
-const applyActivityLevel = (bmr: number, level: 0 | 1 | 2 | 3 | 4): number => {
-  const [activityLevel] = activityLevels[level];
-
-  return bmr * activityLevel;
+const applyActivityLevel = (bmr: number, level: number): number => {
+  return bmr * [1.2, 1.375, 1.55, 1.725, 1.9].at(level)!;
 };
 
 const useCalorieGoal = (): number => {
