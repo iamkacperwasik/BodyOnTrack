@@ -1,35 +1,24 @@
 import { useEffect, useState } from "react";
 
-import getBMR from "formulas/getBMR";
+import getAMR from "formulas/getAMR";
 
-import useBodyInfoStore from "hooks/useBodyInfoStore";
-import useCalculationsStore from "hooks/useCalculationsStore";
+import useCaloriesPerDay from "hooks/useCaloriesPerDay";
 
-const applyActivityLevel = (bmr: number, level: number): number => {
-  return bmr * [1.2, 1.375, 1.55, 1.725, 1.9].at(level)!;
-};
+import useCalculationsStore from "stores/useCalculationsStore";
 
 const useCalorieGoal = (): number => {
-  const { age, weight, height, gender } = useBodyInfoStore();
-  const { activityLevel, goal, calorieLevel } = useCalculationsStore();
+  const { activityLevel, goal } = useCalculationsStore();
+  const { surplus, deficit } = useCalculationsStore();
 
-  const bmr = getBMR(gender, weight!, height!, age!);
+  const { bmr, amr } = useCaloriesPerDay();
 
-  const [calories, setCalories] = useState(
-    applyActivityLevel(bmr, activityLevel)
-  );
-
-  const caloriesPerDay = applyActivityLevel(bmr, activityLevel);
+  const [calories, setCalories] = useState(getAMR(bmr, activityLevel));
 
   useEffect(() => {
-    if (goal === "GAIN_WEIGHT")
-      setCalories(caloriesPerDay + caloriesPerDay * (calorieLevel / 100));
-
-    if (goal === "LOSE_WEIGHT")
-      setCalories(caloriesPerDay - caloriesPerDay * (calorieLevel / 100));
-
-    if (goal === "MAINTAIN") setCalories(caloriesPerDay);
-  }, [goal, calorieLevel, caloriesPerDay]);
+    if (goal === "LOSE_WEIGHT") setCalories(amr - deficit);
+    if (goal === "GAIN_WEIGHT") setCalories(amr + surplus);
+    if (goal === "MAINTAIN") setCalories(amr);
+  }, [goal, amr, deficit, surplus]);
 
   return Number(calories.toFixed(2));
 };

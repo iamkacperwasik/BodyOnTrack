@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 
-import useCalculationsStore from "hooks/useCalculationsStore";
+import useCaloriesPerDay from "hooks/useCaloriesPerDay";
+
+import useCalculationsStore from "stores/useCalculationsStore";
 
 const DeficitLevel = () => {
-  const { goal, setGoal, setCalorieLevel } = useCalculationsStore();
+  const { goal, setGoal, setDeficit, setSurplus } = useCalculationsStore();
+  const { amr } = useCaloriesPerDay();
 
-  const [loseWeightValue, setLoseWeightValue] = useState(0);
-  const [gainWeightValue, setGainWeightValue] = useState(0);
+  const [deficitPercent, setDeficitPercent] = useState(0);
+  const [surplusPercent, setSurplusPercent] = useState(0);
 
   useEffect(() => {
-    if (goal === "LOSE_WEIGHT") return setCalorieLevel(loseWeightValue);
-    if (goal === "GAIN_WEIGHT") return setCalorieLevel(gainWeightValue);
-
-    return;
-  }, [goal, setGoal, loseWeightValue, gainWeightValue, setCalorieLevel]);
+    if (goal === "LOSE_WEIGHT") return setDeficit(amr * (deficitPercent / 100));
+    if (goal === "GAIN_WEIGHT") return setSurplus(amr * (surplusPercent / 100));
+  }, [amr, deficitPercent, goal, setDeficit, setSurplus, surplusPercent]);
 
   return (
     <table className="mt-4">
@@ -45,7 +46,7 @@ const DeficitLevel = () => {
             disabled={goal !== "LOSE_WEIGHT"}
             min={0}
             max={50}
-            onChange={({ target }) => setLoseWeightValue(+target.value)}
+            onChange={({ target }) => setDeficitPercent(+target.value)}
           />
           <span>% deficit</span>
         </td>
@@ -66,7 +67,7 @@ const DeficitLevel = () => {
             disabled={goal !== "GAIN_WEIGHT"}
             min={0}
             max={50}
-            onChange={({ target }) => setGainWeightValue(+target.value)}
+            onChange={({ target }) => setSurplusPercent(+target.value)}
           />
           <span>% surplus</span>
         </td>

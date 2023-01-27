@@ -1,3 +1,5 @@
+// BMR - basal metabolic rate
+
 const getBMR = (
   gender: "M" | "F",
   weight: number,

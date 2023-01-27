@@ -10,9 +10,6 @@ type BodyInfoStore = {
   setWeight(weight: number | null): void;
   setHeight(height: number | null): void;
   switchGender(gender: "M" | "F"): void;
-
-  metric: boolean;
-  switchMetric(val: boolean): void;
 };
 
 const useBodyInfoStore = create<BodyInfoStore>((set) => ({
@@ -25,9 +22,6 @@ const useBodyInfoStore = create<BodyInfoStore>((set) => ({
   setWeight: (weight) => set((state) => ({ ...state, weight })),
   setHeight: (height) => set((state) => ({ ...state, height })),
   switchGender: (gender) => set((state) => ({ ...state, gender })),
-
-  metric: true,
-  switchMetric: (val: boolean) => set((state) => ({ ...state, metric: val })),
 }));
 
 export default useBodyInfoStore;

@@ -1,4 +1,4 @@
-import useBodyInfoStore from "hooks/useBodyInfoStore";
+import useBodyInfoStore from "stores/useBodyInfoStore";
 
 const AgeInput = () => {
   const { age, setAge } = useBodyInfoStore();

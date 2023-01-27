@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Else, If, Then } from "react-if";
 
-import useBodyInfoStore from "hooks/useBodyInfoStore";
+import useBodyInfoStore from "stores/useBodyInfoStore";
+import useFormStore from "stores/useFormStore";
 
 const HeightInput = () => {
-  const { height, setHeight, metric, switchMetric } = useBodyInfoStore();
+  const { height, setHeight } = useBodyInfoStore();
+  const { metric, switchMetric } = useFormStore();
 
   const [inches, setInches] = useState<null | number>(null);
   const [feet, setFeet] = useState<null | number>(null);

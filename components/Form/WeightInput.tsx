@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Else, If, Then } from "react-if";
 
-import useBodyInfoStore from "hooks/useBodyInfoStore";
+import useBodyInfoStore from "stores/useBodyInfoStore";
+import useFormStore from "stores/useFormStore";
 
 const WeightInput = () => {
-  const { weight, setWeight, metric, switchMetric } = useBodyInfoStore();
+  const { weight, setWeight } = useBodyInfoStore();
+  const { metric, switchMetric } = useFormStore();
 
   const [lbs, setLbs] = useState<null | number>(null);
 
