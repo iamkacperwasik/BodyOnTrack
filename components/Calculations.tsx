@@ -26,7 +26,9 @@ const Calculations = () => {
       <div>
         <p>Forecast:</p>
 
-        <span>{JSON.stringify(forecast.map((v) => v.toFixed(2)))}</span>
+        <span>
+          {forecast.map((v) => v.toFixed(2)!).map((v) => `${v} kg, `)}
+        </span>
       </div>
     </Unless>
   );

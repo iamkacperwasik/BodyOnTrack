@@ -9,6 +9,8 @@ const useWeightForecast = (days: number): number[] => {
   const { goal, surplus, deficit } = useCalculationsStore();
   const { weight } = useBodyInfoStore();
 
+  if (!weight) return [];
+
   if (goal === "GAIN_WEIGHT")
     return arrayOfSize(days)
       .map((_, i) => surplus * i)
