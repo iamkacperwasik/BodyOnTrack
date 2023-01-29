@@ -10,7 +10,6 @@ import useBodyInfoStore from "stores/useBodyInfoStore";
 
 const Calculations = () => {
   const { age, weight, height } = useBodyInfoStore();
-
   const forecast = useWeightForecast(10);
   const calories = useCalorieGoal();
 

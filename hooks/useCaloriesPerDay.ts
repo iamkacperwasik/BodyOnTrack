@@ -6,7 +6,6 @@ import useCalculationsStore from "stores/useCalculationsStore";
 
 const useCaloriesPerDay = () => {
   const { activityLevel } = useCalculationsStore();
-
   const { age, weight, height, gender } = useBodyInfoStore();
 
   const bmr = getBMR(gender, weight!, height!, age!);
