@@ -1,6 +1,6 @@
 import useCaloriesPerDay from "hooks/useCaloriesPerDay";
 
-import useCalculationsStore from "stores/useCalculationsStore";
+import useCalculationsStore from "stores/Calculations";
 
 const useCalorieGoal = (): number => {
   const { goal, surplus, deficit } = useCalculationsStore();

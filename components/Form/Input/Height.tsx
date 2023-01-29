@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Else, If, Then } from "react-if";
 
-import useBodyInfoStore from "stores/useBodyInfoStore";
-import useFormStore from "stores/useFormStore";
+import useBodyInfoStore from "stores/BodyInfo";
+import useFormStore from "stores/Form";
 
-const HeightInput = () => {
+const Height = () => {
   const { height, setHeight } = useBodyInfoStore();
   const { metric, switchMetric } = useFormStore();
 
@@ -79,4 +79,4 @@ const HeightInput = () => {
   );
 };
 
-export default HeightInput;
+export default Height;

@@ -30,6 +30,7 @@
       "^components/(.*)$",
       "^formulas/(.*)$",
       "^hooks/(.*)$",
+      "^util/(.*)$",
       "^stores/(.*)$",
       "^[./]"
     ],

@@ -1,8 +1,8 @@
 import getAMR from "formulas/getAMR";
 import getBMR from "formulas/getBMR";
 
-import useBodyInfoStore from "stores/useBodyInfoStore";
-import useCalculationsStore from "stores/useCalculationsStore";
+import useBodyInfoStore from "stores/BodyInfo";
+import useCalculationsStore from "stores/Calculations";
 
 const useCaloriesPerDay = () => {
   const { activityLevel } = useCalculationsStore();

@@ -1,7 +1,7 @@
-import { arrayOfSize } from "util/arrayOfSize";
+import { arrayOfSize } from "util/Array";
 
-import useBodyInfoStore from "stores/useBodyInfoStore";
-import useCalculationsStore from "stores/useCalculationsStore";
+import useBodyInfoStore from "stores/BodyInfo";
+import useCalculationsStore from "stores/Calculations";
 
 const FAT_CALORIES = 7700;
 

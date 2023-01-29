@@ -1,6 +1,6 @@
-import useBodyInfoStore from "stores/useBodyInfoStore";
+import useBodyInfoStore from "stores/BodyInfo";
 
-const GenderSwitch = () => {
+const Gender = () => {
   const { gender, switchGender } = useBodyInfoStore();
 
   const isMale = gender === "M";
@@ -26,4 +26,4 @@ const GenderSwitch = () => {
   );
 };
 
-export default GenderSwitch;
+export default Gender;

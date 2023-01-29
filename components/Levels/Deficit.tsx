@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 
 import useCaloriesPerDay from "hooks/useCaloriesPerDay";
 
-import useCalculationsStore from "stores/useCalculationsStore";
+import useCalculationsStore from "stores/Calculations";
 
-const DeficitLevel = () => {
+const Deficit = () => {
   const { goal, setGoal, setDeficit, setSurplus } = useCalculationsStore();
   const { amr } = useCaloriesPerDay();
 
@@ -76,4 +76,4 @@ const DeficitLevel = () => {
   );
 };
 
-export default DeficitLevel;
+export default Deficit;

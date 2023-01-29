@@ -1,6 +1,6 @@
-import useCalculationsStore from "stores/useCalculationsStore";
+import useCalculationsStore from "stores/Calculations";
 
-const ActivityLevel = () => {
+const Activity = () => {
   const { activityLevel, setActivityLevel } = useCalculationsStore();
 
   return (
@@ -69,4 +69,4 @@ const ActivityLevel = () => {
   );
 };
 
-export default ActivityLevel;
+export default Activity;

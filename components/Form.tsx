@@ -1,14 +1,15 @@
-import AgeInput from "components/Form/AgeInput";
-import GenderSwitch from "components/Form/GenderSwitch";
-import HeightInput from "components/Form/HeightInput";
-import WeightInput from "components/Form/WeightInput";
+import Age from "components/Form/Input/Age";
+import Height from "components/Form/Input/Height";
+import Weight from "components/Form/Input/Weight";
+import Gender from "components/Form/Switch/Gender";
 
 const Form = () => (
   <div className="flex gap-4 flex-col">
-    <AgeInput />
-    <WeightInput />
-    <HeightInput />
-    <GenderSwitch />
+    <Age />
+    <Weight />
+    <Height />
+
+    <Gender />
   </div>
 );
 

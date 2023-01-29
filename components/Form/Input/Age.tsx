@@ -1,6 +1,6 @@
-import useBodyInfoStore from "stores/useBodyInfoStore";
+import useBodyInfoStore from "stores/BodyInfo";
 
-const AgeInput = () => {
+const Age = () => {
   const { age, setAge } = useBodyInfoStore();
 
   return (
@@ -17,4 +17,4 @@ const AgeInput = () => {
   );
 };
 
-export default AgeInput;
+export default Age;

@@ -1,12 +1,12 @@
 import { Unless } from "react-if";
 
-import ActivityLevel from "components/Levels/Activity";
-import DeficitLevel from "components/Levels/Deficit";
+import Activity from "components/Levels/Activity";
+import Deficit from "components/Levels/Deficit";
 
 import useCalorieGoal from "hooks/useCalorieGoal";
 import useWeightForecast from "hooks/useWeightForecast";
 
-import useBodyInfoStore from "stores/useBodyInfoStore";
+import useBodyInfoStore from "stores/BodyInfo";
 
 const Calculations = () => {
   const { age, weight, height } = useBodyInfoStore();
@@ -15,8 +15,8 @@ const Calculations = () => {
 
   return (
     <Unless condition={age === null || weight === null || height === null}>
-      <ActivityLevel />
-      <DeficitLevel />
+      <Activity />
+      <Deficit />
 
       <div className="mt-5">
         <p>Calories per day: {calories}</p>
