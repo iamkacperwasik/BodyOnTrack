@@ -1,4 +1,4 @@
-import create from "zustand";
+import { create } from "zustand";
 
 type CalculationsStore = {
   activityLevel: 0 | 1 | 2 | 3 | 4;
