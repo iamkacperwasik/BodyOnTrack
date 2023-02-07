@@ -1,16 +1,15 @@
 import { Unless } from "react-if";
 
+import Chart from "components/Chart";
 import Activity from "components/Levels/Activity";
 import Deficit from "components/Levels/Deficit";
 
 import useCalorieGoal from "hooks/useCalorieGoal";
-import useWeightForecast from "hooks/useWeightForecast";
 
 import useBodyInfoStore from "stores/BodyInfo";
 
 const Calculations = () => {
   const { age, weight, height } = useBodyInfoStore();
-  const forecast = useWeightForecast(10);
   const calories = useCalorieGoal();
 
   return (
@@ -22,12 +21,8 @@ const Calculations = () => {
         <p>Calories per day: {calories}</p>
       </div>
 
-      <div>
-        <p>Forecast:</p>
-
-        <span>
-          {forecast.map((v) => v.toFixed(2)!).map((v) => `${v} kg, `)}
-        </span>
+      <div className="w-1/3">
+        <Chart />
       </div>
     </Unless>
   );
