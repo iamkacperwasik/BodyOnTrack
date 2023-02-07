@@ -18,60 +18,64 @@ const Deficit = () => {
 
   return (
     <table className="mt-4">
-      <tr className="text-left">
-        <th>Goal</th>
-      </tr>
+      <thead>
+        <tr className="text-left">
+          <th>Goal</th>
+        </tr>
+      </thead>
 
-      <tr>
-        <td
-          className={goal === "MAINTAIN" ? "underline" : "cursor-pointer"}
-          onClick={() => setGoal("MAINTAIN")}
-        >
-          Maintain weight
-        </td>
-      </tr>
+      <tbody>
+        <tr>
+          <td
+            className={goal === "MAINTAIN" ? "underline" : "cursor-pointer"}
+            onClick={() => setGoal("MAINTAIN")}
+          >
+            Maintain weight
+          </td>
+        </tr>
 
-      <tr>
-        <td
-          className={goal === "LOSE_WEIGHT" ? "underline" : "cursor-pointer"}
-          onClick={() => setGoal("LOSE_WEIGHT")}
-        >
-          Lose weight
-        </td>
-        <td className="pl-4">
-          <span>with </span>
-          <input
-            type="number"
-            className="border-[1px] w-min"
-            disabled={goal !== "LOSE_WEIGHT"}
-            min={0}
-            max={50}
-            onChange={({ target }) => setDeficitPercent(+target.value)}
-          />
-          <span>% deficit</span>
-        </td>
-      </tr>
+        <tr>
+          <td
+            className={goal === "LOSE_WEIGHT" ? "underline" : "cursor-pointer"}
+            onClick={() => setGoal("LOSE_WEIGHT")}
+          >
+            Lose weight
+          </td>
+          <td className="pl-4">
+            <span>with </span>
+            <input
+              type="number"
+              className="border-[1px] w-min"
+              disabled={goal !== "LOSE_WEIGHT"}
+              min={0}
+              max={50}
+              onChange={({ target }) => setDeficitPercent(+target.value)}
+            />
+            <span>% deficit</span>
+          </td>
+        </tr>
 
-      <tr>
-        <td
-          className={goal === "GAIN_WEIGHT" ? "underline" : "cursor-pointer"}
-          onClick={() => setGoal("GAIN_WEIGHT")}
-        >
-          Gain weight
-        </td>
-        <td className="pl-4">
-          <span>with </span>
-          <input
-            type="number"
-            className="border-[1px] w-min"
-            disabled={goal !== "GAIN_WEIGHT"}
-            min={0}
-            max={50}
-            onChange={({ target }) => setSurplusPercent(+target.value)}
-          />
-          <span>% surplus</span>
-        </td>
-      </tr>
+        <tr>
+          <td
+            className={goal === "GAIN_WEIGHT" ? "underline" : "cursor-pointer"}
+            onClick={() => setGoal("GAIN_WEIGHT")}
+          >
+            Gain weight
+          </td>
+          <td className="pl-4">
+            <span>with </span>
+            <input
+              type="number"
+              className="border-[1px] w-min"
+              disabled={goal !== "GAIN_WEIGHT"}
+              min={0}
+              max={50}
+              onChange={({ target }) => setSurplusPercent(+target.value)}
+            />
+            <span>% surplus</span>
+          </td>
+        </tr>
+      </tbody>
     </table>
   );
 };
