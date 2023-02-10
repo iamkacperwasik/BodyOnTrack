@@ -22,17 +22,17 @@ const Weight = () => {
 
   return (
     <div>
-      <p>
+      <p className="text-2xl mb-4">
         Weight (
         <span
-          className={`pointer ${metric && "underline"}`}
+          className={`pointer ${metric && "font-bold"}`}
           onClick={() => switchMetric(true)}
         >
           kg
         </span>
         /
         <span
-          className={`pointer ${!metric && "underline"}`}
+          className={`pointer ${!metric && "font-bold"}`}
           onClick={() => switchMetric(false)}
         >
           lb
@@ -44,9 +44,9 @@ const Weight = () => {
         <Then>
           <input
             type="number"
-            className="border-[1px]"
+            className="border-[1px] p-2 w-full"
             value={weight === null || weight === 0 ? "" : weight}
-            onChange={({ target }) => setWeight(+target.value)}
+            onChange={({ target }) => setWeight(Number(target.value))}
             placeholder="kg"
             min={1}
           />
@@ -54,9 +54,9 @@ const Weight = () => {
         <Else>
           <input
             type="number"
-            className="border-[1px]"
+            className="border-[1px] p-2 w-full"
             value={lbs === null || lbs === 0 ? "" : lbs}
-            onChange={({ target }) => setLbs(+target.value)}
+            onChange={({ target }) => setLbs(Number(target.value))}
             placeholder="lbs"
             min={1}
           />

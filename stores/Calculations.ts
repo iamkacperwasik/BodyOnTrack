@@ -1,13 +1,15 @@
 import { create } from "zustand";
 
+export type Goal = "MAINTAIN" | "LOSE_WEIGHT" | "GAIN_WEIGHT";
+
 type CalculationsStore = {
   activityLevel: 0 | 1 | 2 | 3 | 4;
-  goal: "MAINTAIN" | "LOSE_WEIGHT" | "GAIN_WEIGHT";
+  goal: Goal;
   surplus: number;
   deficit: number;
 
   setActivityLevel(level: 0 | 1 | 2 | 3 | 4): void;
-  setGoal(goal: "MAINTAIN" | "LOSE_WEIGHT" | "GAIN_WEIGHT"): void;
+  setGoal(goal: Goal): void;
   setSurplus(surplus: number): void;
   setDeficit(deficit: number): void;
 };

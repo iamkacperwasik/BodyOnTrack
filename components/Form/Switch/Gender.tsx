@@ -7,16 +7,18 @@ const Gender = () => {
 
   return (
     <div>
-      <p>Gender</p>
-      <div className="flex gap-2">
+      <p className="mb-4 text-2xl">Gender</p>
+
+      <div className="flex gap-8 text-xl">
         <button
-          className={isMale ? "underline" : ""}
+          className={isMale ? "uppercase font-bold" : ""}
           onClick={() => switchGender("M")}
         >
           Male
         </button>
+
         <button
-          className={!isMale ? "underline" : ""}
+          className={!isMale ? "uppercase font-bold" : ""}
           onClick={() => switchGender("F")}
         >
           Female

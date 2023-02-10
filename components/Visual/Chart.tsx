@@ -21,7 +21,7 @@ ChartJS.register(
 );
 
 const Chart = () => {
-  const forecast = useWeightForecast(15);
+  const { forecast } = useWeightForecast(15);
 
   const labels = arrayOfSize(15)
     .map((_, i) => i + 1)

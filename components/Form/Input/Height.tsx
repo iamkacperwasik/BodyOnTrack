@@ -26,55 +26,58 @@ const Height = () => {
 
   return (
     <div>
-      <p>
-        Height (
+      <p className="text-2xl mb-4">
+        <span>Height (</span>
         <span
-          className={`pointer ${metric && "underline"}`}
+          className={`pointer ${metric && "font-bold"}`}
           onClick={() => switchMetric(true)}
         >
           cm
         </span>
-        /
+        <span>/</span>
         <span
-          className={`pointer ${!metric && "underline"}`}
+          className={`pointer ${!metric && "font-bold"}`}
           onClick={() => switchMetric(false)}
         >
           ft
         </span>
-        )
+        <span>)</span>
       </p>
 
-      <If condition={metric}>
-        <Then>
-          <input
-            type="number"
-            className="border-[1px]"
-            value={height === null || height === 0 ? "" : height}
-            onChange={({ target }) => setHeight(+target.value)}
-            placeholder="cm"
-            min={1}
-          />
-        </Then>
-        <Else>
-          <input
-            type="number"
-            className="border-[1px]"
-            value={feet === null || feet === 0 ? "" : feet}
-            onChange={({ target }) => setFeet(+target.value)}
-            placeholder="ft"
-            min={1}
-          />
-          <input
-            type="number"
-            className="border-[1px]"
-            value={inches === null || inches === 0 ? "" : inches}
-            onChange={({ target }) => setInches(+target.value)}
-            placeholder="inch"
-            min={0}
-            max={11}
-          />
-        </Else>
-      </If>
+      <div className="flex gap-2">
+        <If condition={metric}>
+          <Then>
+            <input
+              type="number"
+              className="border-[1px] p-2 w-full"
+              value={height === null || height === 0 ? "" : height}
+              onChange={({ target }) => setHeight(+target.value)}
+              placeholder="cm"
+              min={1}
+            />
+          </Then>
+          <Else>
+            <input
+              type="number"
+              className="border-[1px] p-2 w-2/3"
+              value={feet === null || feet === 0 ? "" : feet}
+              onChange={({ target }) => setFeet(Number(target.value))}
+              placeholder="ft"
+              min={1}
+            />
+
+            <input
+              type="number"
+              className="border-[1px] p-2 w-1/3"
+              value={inches === null || inches === 0 ? "" : inches}
+              onChange={({ target }) => setInches(Number(target.value))}
+              placeholder="inch"
+              min={0}
+              max={11}
+            />
+          </Else>
+        </If>
+      </div>
     </div>
   );
 };

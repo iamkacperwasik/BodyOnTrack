@@ -8,7 +8,6 @@ const Form = () => (
     <Age />
     <Weight />
     <Height />
-
     <Gender />
   </div>
 );
