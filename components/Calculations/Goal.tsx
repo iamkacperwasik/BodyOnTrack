@@ -3,9 +3,9 @@ import { Case, Switch } from "react-if";
 
 import useCaloriesPerDay from "hooks/useCaloriesPerDay";
 
-import useCalculationsStore, { Goal } from "stores/Calculations";
+import useCalculationsStore from "stores/Calculations";
 
-const Goal= () => {
+const Goal = () => {
   const { goal, setGoal, setDeficit, setSurplus } = useCalculationsStore();
   const { amr } = useCaloriesPerDay();
 
@@ -17,8 +17,8 @@ const Goal= () => {
   }, [amr, goal, percent, setPercent, setDeficit, setSurplus]);
 
   useEffect(() => {
-    setPercent(0)
-  }, [goal]) 
+    setPercent(0);
+  }, [goal]);
 
   return (
     <div>
@@ -65,4 +65,4 @@ const Goal= () => {
   );
 };
 
-export default Goal
+export default Goal;

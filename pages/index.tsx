@@ -9,8 +9,8 @@ import getBMI from "formulas/getBMI";
 
 import useCalorieGoal from "hooks/useCalorieGoal";
 
-import { formatBMI } from "util/formatBMI";
-import { formatCalories } from "util/formatCalories";
+import { formatBMI } from "util/formatting/formatBMI";
+import { formatCalories } from "util/formatting/formatCalories";
 
 import useBodyInfoStore from "stores/BodyInfo";
 

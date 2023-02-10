@@ -11,7 +11,7 @@ const Activity = ({ description, level }: Props) => {
   return (
     <div className="flex h-16">
       <button
-        onClick={() => setActivityLevel(level as 0 | 1 | 2 | 3 | 4)}
+        onClick={() => setActivityLevel(level as ActivityLevel)}
         className={`
           text-center text-2xl cursor-pointer w-16
           ${activityLevel === level && "font-bold"}`}
