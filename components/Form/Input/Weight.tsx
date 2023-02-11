@@ -1,28 +1,28 @@
-import { useEffect, useState } from "react";
-import { Else, If, Then } from "react-if";
+import {useEffect, useState} from "react"
+import {Else, If, Then} from "react-if"
 
-import useBodyInfoStore from "stores/BodyInfo";
-import useFormStore from "stores/Form";
+import useBodyInfoStore from "stores/BodyInfo"
+import useFormStore from "stores/Form"
 
 const Weight = () => {
-  const { weight, setWeight } = useBodyInfoStore();
-  const { metric, switchMetric } = useFormStore();
+  const {weight, setWeight} = useBodyInfoStore()
+  const {metric, switchMetric} = useFormStore()
 
-  const [lbs, setLbs] = useState<null | number>(null);
+  const [lbs, setLbs] = useState<null | number>(null)
 
   useEffect(() => {
-    if (lbs !== null) return setWeight(lbs * 0.45359237);
-  }, [lbs, setLbs, setWeight]);
+    if (lbs !== null) return setWeight(lbs * 0.45359237)
+  }, [lbs, setLbs, setWeight])
 
   // clear inputs when switching metric/imperial
   useEffect(() => {
-    setWeight(null);
-    setLbs(null);
-  }, [metric, setWeight]);
+    setWeight(null)
+    setLbs(null)
+  }, [metric, setWeight])
 
   return (
     <div>
-      <p className="text-2xl mb-4">
+      <p className="mb-4 text-2xl sm:text-3xl">
         Weight (
         <span
           className={`pointer ${metric && "font-bold"}`}
@@ -44,9 +44,9 @@ const Weight = () => {
         <Then>
           <input
             type="number"
-            className="border-[1px] p-2 w-full"
+            className="w-full border-[1px] p-2 sm:text-xl"
             value={weight === null || weight === 0 ? "" : weight}
-            onChange={({ target }) => setWeight(Number(target.value))}
+            onChange={({target}) => setWeight(Number(target.value))}
             placeholder="kg"
             min={1}
           />
@@ -54,16 +54,16 @@ const Weight = () => {
         <Else>
           <input
             type="number"
-            className="border-[1px] p-2 w-full"
+            className="w-full border-[1px] p-2 sm:text-xl"
             value={lbs === null || lbs === 0 ? "" : lbs}
-            onChange={({ target }) => setLbs(Number(target.value))}
+            onChange={({target}) => setLbs(Number(target.value))}
             placeholder="lbs"
             min={1}
           />
         </Else>
       </If>
     </div>
-  );
-};
+  )
+}
 
-export default Weight;
+export default Weight

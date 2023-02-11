@@ -1,23 +1,23 @@
-import { ChangeEvent } from "react";
+import {ChangeEvent} from "react"
 
-import useBodyInfoStore from "stores/BodyInfo";
+import useBodyInfoStore from "stores/BodyInfo"
 
 const Age = () => {
-  const { age, setAge } = useBodyInfoStore();
+  const {age, setAge} = useBodyInfoStore()
 
   return (
     <div>
-      <p className="text-2xl mb-4">Age</p>
+      <p className="mb-4 text-2xl sm:text-3xl">Age</p>
       <input
         type="number"
-        className="border-[1px] p-2 w-full"
+        className="w-full border-[1px] p-2 sm:text-xl"
         value={age === null || age === 0 ? "" : age}
-        onChange={({ target }) => setAge(Number(target.value))}
+        onChange={({target}) => setAge(Number(target.value))}
         min={1}
         placeholder="years"
       />
     </div>
-  );
-};
+  )
+}
 
-export default Age;
+export default Age

@@ -1,4 +1,4 @@
-import Activity from "components/Calculations/Activity";
+import Activity from "components/Calculations/Activity"
 
 const ActivityList = () => (
   <div className="flex flex-col gap-2">
@@ -20,6 +20,6 @@ const ActivityList = () => (
       level={4}
     />
   </div>
-);
+)
 
-export default ActivityList;
+export default ActivityList

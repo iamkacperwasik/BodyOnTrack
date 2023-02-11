@@ -1,27 +1,27 @@
-import useCalculationsStore from "stores/Calculations";
+import useCalculationsStore from "stores/Calculations"
 
 type Props = {
-  level: number;
-  description: string;
-};
+  level: number
+  description: string
+}
 
-const Activity = ({ description, level }: Props) => {
-  const { activityLevel, setActivityLevel } = useCalculationsStore();
+const Activity = ({description, level}: Props) => {
+  const {activityLevel, setActivityLevel} = useCalculationsStore()
 
   return (
     <div className="flex h-16">
       <button
         onClick={() => setActivityLevel(level as ActivityLevel)}
         className={`
-          text-center text-2xl cursor-pointer w-16
+          w-16 cursor-pointer text-center text-2xl sm:text-3xl
           ${activityLevel === level && "font-bold"}`}
       >
         {level + 1}
       </button>
 
-      <p className="w-full px-4 flex items-center">{description}</p>
+      <p className="flex w-full items-center px-4 sm:text-2xl">{description}</p>
     </div>
-  );
-};
+  )
+}
 
-export default Activity;
+export default Activity

@@ -1,32 +1,32 @@
-import { useEffect, useState } from "react";
-import { Else, If, Then } from "react-if";
+import {useEffect, useState} from "react"
+import {Else, If, Then} from "react-if"
 
-import useBodyInfoStore from "stores/BodyInfo";
-import useFormStore from "stores/Form";
+import useBodyInfoStore from "stores/BodyInfo"
+import useFormStore from "stores/Form"
 
 const Height = () => {
-  const { height, setHeight } = useBodyInfoStore();
-  const { metric, switchMetric } = useFormStore();
+  const {height, setHeight} = useBodyInfoStore()
+  const {metric, switchMetric} = useFormStore()
 
-  const [inches, setInches] = useState<null | number>(null);
-  const [feet, setFeet] = useState<null | number>(null);
+  const [inches, setInches] = useState<null | number>(null)
+  const [feet, setFeet] = useState<null | number>(null)
 
   useEffect(() => {
     if (!metric && feet !== null) {
-      return setHeight(feet / 0.032808 + (inches || 0) * 2.54);
+      return setHeight(feet / 0.032808 + (inches || 0) * 2.54)
     }
-  }, [feet, inches, setFeet, setInches, setHeight, metric]);
+  }, [feet, inches, setFeet, setInches, setHeight, metric])
 
   // clear inputs when switching metric/imperial
   useEffect(() => {
-    setHeight(null);
-    setFeet(null);
-    setInches(null);
-  }, [metric, setHeight]);
+    setHeight(null)
+    setFeet(null)
+    setInches(null)
+  }, [metric, setHeight])
 
   return (
     <div>
-      <p className="text-2xl mb-4">
+      <p className="mb-4 text-2xl sm:text-3xl">
         <span>Height (</span>
         <span
           className={`pointer ${metric && "font-bold"}`}
@@ -49,9 +49,9 @@ const Height = () => {
           <Then>
             <input
               type="number"
-              className="border-[1px] p-2 w-full"
+              className="w-full border-[1px] p-2 sm:text-xl"
               value={height === null || height === 0 ? "" : height}
-              onChange={({ target }) => setHeight(+target.value)}
+              onChange={({target}) => setHeight(+target.value)}
               placeholder="cm"
               min={1}
             />
@@ -59,18 +59,18 @@ const Height = () => {
           <Else>
             <input
               type="number"
-              className="border-[1px] p-2 w-2/3"
+              className="w-2/3 border-[1px] p-2 sm:text-xl"
               value={feet === null || feet === 0 ? "" : feet}
-              onChange={({ target }) => setFeet(Number(target.value))}
+              onChange={({target}) => setFeet(Number(target.value))}
               placeholder="ft"
               min={1}
             />
 
             <input
               type="number"
-              className="border-[1px] p-2 w-1/3"
+              className="w-1/3 border-[1px] p-2 sm:text-xl"
               value={inches === null || inches === 0 ? "" : inches}
-              onChange={({ target }) => setInches(Number(target.value))}
+              onChange={({target}) => setInches(Number(target.value))}
               placeholder="inch"
               min={0}
               max={11}
@@ -79,7 +79,7 @@ const Height = () => {
         </If>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Height;
+export default Height
