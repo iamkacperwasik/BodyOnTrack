@@ -22,7 +22,7 @@ const Home = () => {
   const formattedBMI = formatBMI(getBMI(weight!, height!))
 
   return (
-    <div className="mx-auto flex flex-col gap-8 p-4 md:w-1/3">
+    <div className="mx-auto flex flex-col gap-8 p-4 md:w-1/2">
       <Form />
 
       <Unless condition={age === null || weight === null || height === null}>
