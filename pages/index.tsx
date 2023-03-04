@@ -3,6 +3,7 @@ import {Unless} from "react-if"
 
 import ActivityList from "components/Calculations/ActivityList"
 import Goal from "components/Calculations/Goal"
+import Footer from "components/Footer"
 import Form from "components/Form/Form"
 import Chart from "components/Visual/Chart"
 
@@ -50,6 +51,8 @@ const Home = () => {
 
           <Chart />
         </Unless>
+
+        <Footer />
       </div>
     </>
   )
