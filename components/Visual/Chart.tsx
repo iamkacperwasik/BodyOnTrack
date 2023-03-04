@@ -15,12 +15,12 @@ import {arrayOfSize} from "util/Array"
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip)
 
 const Chart = () => {
-  const {forecast} = useWeightForecast(15)
+  const {forecast} = useWeightForecast(3 * 4)
 
-  const labels = arrayOfSize(15)
+  const labels = arrayOfSize(3 * 4)
     .map((_, i) => i + 1)
     .map((offset) => {
-      const date = new Date(Date.now() + 60 * 60 * 1000 * 24 * offset)
+      const date = new Date(Date.now() + 60 * 60 * 1000 * 24 * 7 * offset)
 
       return date
     })

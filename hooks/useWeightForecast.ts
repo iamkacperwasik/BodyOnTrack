@@ -5,7 +5,7 @@ import useCalculationsStore from "stores/Calculations"
 
 const FAT_CALORIES = 7700
 
-const useWeightForecast = (days: number) => {
+const useWeightForecast = (weeks: number) => {
   const {goal, surplus, deficit} = useCalculationsStore()
   const {weight} = useBodyInfoStore()
 
@@ -13,21 +13,21 @@ const useWeightForecast = (days: number) => {
 
   if (goal === "GAIN_WEIGHT")
     return {
-      forecast: arrayOfSize(days)
-        .map((_, i) => surplus * i)
+      forecast: arrayOfSize(weeks)
+        .map((_, i) => surplus * i * 7)
         .map((calories) => calories / FAT_CALORIES) // gained weight
         .map((gainedWeight) => weight! + gainedWeight),
     }
 
   if (goal === "LOSE_WEIGHT")
     return {
-      forecast: arrayOfSize(days)
-        .map((_, i) => deficit * i)
+      forecast: arrayOfSize(weeks)
+        .map((_, i) => deficit * i * 7)
         .map((calories) => calories / FAT_CALORIES) // lost weight
         .map((lostWeight) => weight! - lostWeight),
     }
 
-  return {forecast: arrayOfSize(days).map(() => weight) as number[]} // LINEAR
+  return {forecast: arrayOfSize(weeks).map(() => weight) as number[]} // LINEAR
 }
 
 export default useWeightForecast
