@@ -1,6 +1,6 @@
 # KCalculator
 
-Demo: https://kcalculator-iamkacperwasik.vercel.app/
+Demo: https://kcalculator.kacper.wasik.me/
 
 ![Pc view](./images/pc1.png)
 
