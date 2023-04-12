@@ -35,6 +35,7 @@
       "^hooks/(.*)$",
       "^util/(.*)$",
       "^stores/(.*)$",
+      "^views/(.*)$",
       "^[./]"
     ],
     "importOrderSeparation": true,
