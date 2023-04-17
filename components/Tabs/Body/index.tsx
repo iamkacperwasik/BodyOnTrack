@@ -1,3 +1,4 @@
+import {Option} from "components/Tabs/Body/Option"
 import {Heading} from "components/UI/Heading"
 import {Input} from "components/UI/Input"
 
@@ -25,8 +26,8 @@ export const Body = () => {
         <p className="mb-4 text-2xl font-bold uppercase">Zaznacz swoją płeć</p>
 
         <div className="flex gap-8 text-2xl">
-          <button className="font-mono">Mężczyzna</button>
-          <button className="font-mono underline">Kobieta</button>
+          <Option sex="M">Mężczyzna</Option>
+          <Option sex="F">Kobieta</Option>
         </div>
       </div>
     </>
