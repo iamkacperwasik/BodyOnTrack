@@ -8,6 +8,7 @@ import {
   activityLevelAtom,
   ageAtom,
   goalAtom,
+  goalTargetAtom,
   heightAtom,
   sexAtom,
   weightAtom,
@@ -23,8 +24,9 @@ export const CalculationsPage = () => {
   const sex = useAtomValue(sexAtom)
   const activityLevel = useAtomValue(activityLevelAtom)
   const goal = useAtomValue(goalAtom)
+  const goalTarget = useAtomValue(goalTargetAtom)
 
-  // console.log({age, weight, height, sex, activityLevel, goal})
+  // console.log({age, weight, height, sex, activityLevel, goal, goalTarget})
 
   return (
     <>
