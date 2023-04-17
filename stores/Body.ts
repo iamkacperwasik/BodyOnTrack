@@ -12,4 +12,4 @@ export const sexAtom = atom<Sex>("M")
 
 export const activityLevelAtom = atom<ActivityLevel>(0)
 export const goalAtom = atom<Goal>("MAINTAIN")
-export const goalTargetAtom = atom(0)
+export const goalTargetAtom = atom<null | number>(null)

@@ -1,14 +1,19 @@
-import {useSetAtom} from "jotai"
+import {useAtomValue, useSetAtom} from "jotai"
 import Head from "next/head"
 
 import {Activity} from "components/Tabs/Activity"
 import {Goal} from "components/Tabs/Goal"
 import {Button} from "components/UI/Button"
 
+import {goalAtom, goalTargetAtom} from "stores/Body"
 import {tabAtom} from "stores/Navigation"
 
 export const ActivityGoalPage = () => {
   const setTab = useSetAtom(tabAtom)
+  const goal = useAtomValue(goalAtom)
+  const goalTarget = useAtomValue(goalTargetAtom)
+
+  const canGoNext = goal === "MAINTAIN" || goalTarget !== null
 
   return (
     <>
@@ -23,7 +28,10 @@ export const ActivityGoalPage = () => {
 
           <div className="flex gap-4">
             <Button onClick={() => setTab("BODY")}>Zmień dane ciała</Button>
-            <Button onClick={() => setTab("CALCULATIONS")}>
+            <Button
+              onClick={() => setTab("CALCULATIONS")}
+              disabled={!canGoNext}
+            >
               Przejdź dalej
             </Button>
           </div>
