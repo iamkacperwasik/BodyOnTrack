@@ -1,8 +1,14 @@
+import {useAtom} from "jotai"
+
 import {Option} from "components/Tabs/Goal/Option"
 import {Heading} from "components/UI/Heading"
 import {Input} from "components/UI/Input"
 
+import {goalTargetAtom} from "stores/Body"
+
 export const Goal = () => {
+  const [goalTarget, setGoalTarget] = useAtom(goalTargetAtom)
+
   return (
     <>
       <Heading>3. Mój cel</Heading>
@@ -13,13 +19,10 @@ export const Goal = () => {
         <Option goal="LOSE_WEIGHT">Schudnąć</Option>
       </div>
 
-      <Input min={1} placeholder="Nadwyżka kalorii" />
-      {/* <input
-            type="number"
-            className="w-full border-[1px] bg-transparent p-2 font-mono text-white"
-            min={1}
-            placeholder="Deficyt kaloryczny"
-          /> */}
+      <Input
+        placeholder="Nadwyżka kalorii"
+        state={[goalTarget, setGoalTarget]}
+      />
     </>
   )
 }

@@ -18,12 +18,7 @@ export const Body = () => {
       <div>
         <p className="mb-4 text-2xl font-bold uppercase">Ile masz lat?</p>
 
-        <Input
-          min={1}
-          placeholder="Wiek w latach"
-          onChange={({target}) => setAge(+target.value)}
-          value={age || ""}
-        />
+        <Input min={1} placeholder="Wiek w latach" state={[age, setAge]} />
       </div>
       <div>
         <p className="mb-4 text-2xl font-bold uppercase">Ile ważysz?</p>
@@ -31,18 +26,15 @@ export const Body = () => {
         <Input
           min={1}
           placeholder="Waga w kilogramach"
-          onChange={({target}) => setWeight(+target.value)}
-          value={weight || ""}
+          state={[weight, setWeight]}
         />
       </div>
       <div>
         <p className="mb-4 text-2xl font-bold uppercase">Ile mierzysz?</p>
 
         <Input
-          min={1}
           placeholder="Wzrost w centymetrach"
-          onChange={({target}) => setHeight(+target.value)}
-          value={height || ""}
+          state={[height, setHeight]}
         />
       </div>
       <div>
