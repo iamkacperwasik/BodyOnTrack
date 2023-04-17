@@ -5,10 +5,10 @@ import {Option} from "components/Tabs/Goal/Option"
 import {Heading} from "components/UI/Heading"
 import {Input} from "components/UI/Input"
 
-import {goalAtom, goalTargetAtom} from "stores/Body"
+import {calorieTargetAtom, goalAtom} from "stores/Body"
 
 export const Goal = () => {
-  const [goalTarget, setGoalTarget] = useAtom(goalTargetAtom)
+  const [calorieTarget, setCalorieTarget] = useAtom(calorieTargetAtom)
   const goal = useAtomValue(goalAtom)
 
   return (
@@ -26,7 +26,7 @@ export const Goal = () => {
           placeholder={
             goal === "GAIN_WEIGHT" ? "Nadwyżka kalorii" : "Deficyt kalorii"
           }
-          state={[goalTarget, setGoalTarget]}
+          state={[calorieTarget, setCalorieTarget]}
         />
       </When>
     </>

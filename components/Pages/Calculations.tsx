@@ -1,32 +1,13 @@
-import {useAtomValue, useSetAtom} from "jotai"
+import {useSetAtom} from "jotai"
 import Head from "next/head"
 
 import {Calculations} from "components/Tabs/Calculations"
 import {Button} from "components/UI/Button"
 
-import {
-  activityLevelAtom,
-  ageAtom,
-  goalAtom,
-  goalTargetAtom,
-  heightAtom,
-  sexAtom,
-  weightAtom,
-} from "stores/Body"
 import {tabAtom} from "stores/Navigation"
 
 export const CalculationsPage = () => {
   const setTab = useSetAtom(tabAtom)
-
-  const age = useAtomValue(ageAtom)
-  const weight = useAtomValue(weightAtom)
-  const height = useAtomValue(heightAtom)
-  const sex = useAtomValue(sexAtom)
-  const activityLevel = useAtomValue(activityLevelAtom)
-  const goal = useAtomValue(goalAtom)
-  const goalTarget = useAtomValue(goalTargetAtom)
-
-  // console.log({age, weight, height, sex, activityLevel, goal, goalTarget})
 
   return (
     <>

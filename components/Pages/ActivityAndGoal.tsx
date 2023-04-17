@@ -5,15 +5,15 @@ import {Activity} from "components/Tabs/Activity"
 import {Goal} from "components/Tabs/Goal"
 import {Button} from "components/UI/Button"
 
-import {goalAtom, goalTargetAtom} from "stores/Body"
+import {calorieTargetAtom, goalAtom} from "stores/Body"
 import {tabAtom} from "stores/Navigation"
 
 export const ActivityGoalPage = () => {
   const setTab = useSetAtom(tabAtom)
   const goal = useAtomValue(goalAtom)
-  const goalTarget = useAtomValue(goalTargetAtom)
+  const calorieTarget = useAtomValue(calorieTargetAtom)
 
-  const canGoNext = goal === "MAINTAIN" || goalTarget !== null
+  const canGoNext = goal === "MAINTAIN" || calorieTarget !== null
 
   return (
     <>
