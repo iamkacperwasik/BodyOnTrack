@@ -6,7 +6,7 @@ import {ActivityGoalPage} from "components/Pages/ActivityAndGoal"
 import {BodyPage} from "components/Pages/BodyInfo"
 import {CalculationsPage} from "components/Pages/Calculations"
 
-import {tabAtom} from "stores/UI"
+import {tabAtom} from "stores/Navigation"
 
 const Home = () => {
   const tab = useAtomValue(tabAtom)

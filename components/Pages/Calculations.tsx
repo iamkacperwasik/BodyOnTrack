@@ -2,8 +2,9 @@ import {useSetAtom} from "jotai"
 import Head from "next/head"
 
 import {Calculations} from "components/Tabs/Calculations"
+import {Button} from "components/UI/Button"
 
-import {tabAtom} from "stores/UI"
+import {tabAtom} from "stores/Navigation"
 
 export const CalculationsPage = () => {
   const setTab = useSetAtom(tabAtom)
@@ -19,19 +20,10 @@ export const CalculationsPage = () => {
           <Calculations />
 
           <div className="flex gap-4">
-            <button
-              className="bg-white py-2 px-6 uppercase text-black disabled:bg-gray-300"
-              onClick={() => setTab("BODY")}
-            >
-              Zmień dane ciała
-            </button>
-
-            <button
-              className="bg-white py-2 px-6 uppercase text-black disabled:bg-gray-300"
-              onClick={() => setTab("ACTIVITY/GOAL")}
-            >
+            <Button onClick={() => setTab("BODY")}>Zmień dane ciała</Button>
+            <Button onClick={() => setTab("ACTIVITY/GOAL")}>
               Zmień aktywność i wagę
-            </button>
+            </Button>
           </div>
         </div>
       </div>

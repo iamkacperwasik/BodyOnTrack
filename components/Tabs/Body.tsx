@@ -1,7 +1,9 @@
+import {Heading} from "components/UI/Heading"
+
 export const Body = () => {
   return (
     <>
-      <h1 className="text-4xl font-bold uppercase">1. Dane ciała</h1>
+      <Heading>1. Dane ciała</Heading>
 
       <div>
         <p className="mb-4 text-2xl font-bold uppercase">Ile masz lat?</p>

@@ -1,24 +1,27 @@
+import {Option} from "components/Tabs/Activity/Option"
+import {Heading} from "components/UI/Heading"
+
 export const Activity = () => {
   return (
     <>
-      <h1 className="text-4xl font-bold uppercase">2. Aktywność fizyczna</h1>
+      <Heading>2. Aktywność fizyczna</Heading>
 
       <ul className="flex list-inside list-disc flex-col gap-2">
-        <li className="text-2xl font-bold uppercase underline">
+        <Option activityLevel={0}>
           Praca siedząca (mało lub brak ćwiczeń)
-        </li>
-        <li className="text-2xl">
+        </Option>
+        <Option activityLevel={1}>
           Lekka aktywność (mało lub 1-3 treningi w tygodniu)
-        </li>
-        <li className="text-2xl">
+        </Option>
+        <Option activityLevel={2}>
           Średnia aktywność (3-5 treningów w tygodniu)
-        </li>
-        <li className="text-2xl">
+        </Option>
+        <Option activityLevel={3}>
           Wysoka aktywność (6-7 treningów w tygodniu)
-        </li>
-        <li className="text-2xl">
+        </Option>
+        <Option activityLevel={4}>
           Bardzo wysoka aktywność (ciężkie trening i praca fizyczna)
-        </li>
+        </Option>
       </ul>
     </>
   )

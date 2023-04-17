@@ -1,12 +1,15 @@
+import {Option} from "components/Tabs/Goal/Option"
+import {Heading} from "components/UI/Heading"
+
 export const Goal = () => {
   return (
     <>
-      <h1 className="text-4xl font-bold uppercase">3. Mój cel</h1>
+      <Heading>3. Mój cel</Heading>
 
       <div className="flex gap-8 text-2xl">
-        <p className="cursor-pointer">Utrzymać wagę</p>
-        <p className="cursor-pointer font-bold underline">Przytyć</p>
-        <p className="cursor-pointer">Schudnąć</p>
+        <Option goal="MAINTAIN">Utrzymać wagę</Option>
+        <Option goal="GAIN_WEIGHT">Przytyć</Option>
+        <Option goal="LOSE_WEIGHT">Schudnąć</Option>
       </div>
 
       <input

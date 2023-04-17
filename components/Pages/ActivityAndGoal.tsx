@@ -3,8 +3,9 @@ import Head from "next/head"
 
 import {Activity} from "components/Tabs/Activity"
 import {Goal} from "components/Tabs/Goal"
+import {Button} from "components/UI/Button"
 
-import {tabAtom} from "stores/UI"
+import {tabAtom} from "stores/Navigation"
 
 export const ActivityGoalPage = () => {
   const setTab = useSetAtom(tabAtom)
@@ -21,19 +22,10 @@ export const ActivityGoalPage = () => {
           <Goal />
 
           <div className="flex gap-4">
-            <button
-              className="bg-white py-2 px-6 uppercase text-black disabled:bg-gray-300"
-              onClick={() => setTab("BODY")}
-            >
-              Zmień dane ciała
-            </button>
-
-            <button
-              className="bg-white py-2 px-6 uppercase text-black disabled:bg-gray-300"
-              onClick={() => setTab("CALCULATIONS")}
-            >
+            <Button onClick={() => setTab("BODY")}>Zmień dane ciała</Button>
+            <Button onClick={() => setTab("CALCULATIONS")}>
               Przejdź dalej
-            </button>
+            </Button>
           </div>
         </div>
       </div>
