@@ -1,5 +1,6 @@
 import {Option} from "components/Tabs/Goal/Option"
 import {Heading} from "components/UI/Heading"
+import {Input} from "components/UI/Input"
 
 export const Goal = () => {
   return (
@@ -12,12 +13,7 @@ export const Goal = () => {
         <Option goal="LOSE_WEIGHT">Schudnąć</Option>
       </div>
 
-      <input
-        type="number"
-        className="w-full border-[1px] bg-transparent p-2 font-mono text-white"
-        min={1}
-        placeholder="Nadwyżka kalorii"
-      />
+      <Input min={1} placeholder="Nadwyżka kalorii" />
       {/* <input
             type="number"
             className="w-full border-[1px] bg-transparent p-2 font-mono text-white"

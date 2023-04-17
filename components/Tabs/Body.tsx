@@ -1,4 +1,5 @@
 import {Heading} from "components/UI/Heading"
+import {Input} from "components/UI/Input"
 
 export const Body = () => {
   return (
@@ -7,30 +8,18 @@ export const Body = () => {
 
       <div>
         <p className="mb-4 text-2xl font-bold uppercase">Ile masz lat?</p>
-        <input
-          type="number"
-          className="w-full border-[1px] bg-transparent p-2 font-mono text-white"
-          min={1}
-          placeholder="Wiek w latach"
-        />
+
+        <Input min={1} placeholder="Wiek w latach" />
       </div>
       <div>
         <p className="mb-4 text-2xl font-bold uppercase">Ile ważysz?</p>
-        <input
-          type="number"
-          className="w-full border-[1px] bg-transparent p-2 font-mono text-white"
-          min={1}
-          placeholder="Waga w kilogramach"
-        />
+
+        <Input min={1} placeholder="Waga w kilogramach" />
       </div>
       <div>
         <p className="mb-4 text-2xl font-bold uppercase">Ile mierzysz?</p>
-        <input
-          type="number"
-          className="w-full border-[1px] bg-transparent p-2 font-mono text-white"
-          min={1}
-          placeholder="Wzrost w centymetrach"
-        />
+
+        <Input min={1} placeholder="Wzrost w centymetrach" />
       </div>
       <div>
         <p className="mb-4 text-2xl font-bold uppercase">Zaznacz swoją płeć</p>
