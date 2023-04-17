@@ -4,14 +4,14 @@ export const Input = ({
   state: [value, changeValue],
   ...props
 }: InputHTMLAttributes<HTMLInputElement> & {
-  state: [number | null, (value: number) => void]
+  state: [number | null, (value: number | null) => void]
 }) => (
   <input
     min={1}
     type="number"
     className="w-full border-[1px] bg-transparent p-2 font-mono text-white"
     value={value || ""}
-    onChange={({target}) => changeValue(+target.value)}
+    onChange={({target}) => changeValue(+target.value || null)}
     {...props}
   />
 )

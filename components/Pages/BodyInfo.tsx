@@ -1,13 +1,20 @@
-import {useSetAtom} from "jotai"
+import {useAtomValue, useSetAtom} from "jotai"
 import Head from "next/head"
 
 import {Body} from "components/Tabs/Body"
 import {Button} from "components/UI/Button"
 
+import {ageAtom, heightAtom, weightAtom} from "stores/Body"
 import {tabAtom} from "stores/Navigation"
 
 export const BodyPage = () => {
   const setTab = useSetAtom(tabAtom)
+
+  const age = useAtomValue(ageAtom)
+  const weight = useAtomValue(weightAtom)
+  const height = useAtomValue(heightAtom)
+
+  const canGoNext = age !== null && weight !== null && height !== null
 
   return (
     <>
@@ -20,7 +27,10 @@ export const BodyPage = () => {
           <Body />
 
           <div className="flex gap-4">
-            <Button onClick={() => setTab("ACTIVITY/GOAL")}>
+            <Button
+              onClick={() => setTab("ACTIVITY/GOAL")}
+              disabled={!canGoNext}
+            >
               Przejdź dalej
             </Button>
           </div>
