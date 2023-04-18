@@ -5,7 +5,7 @@ import {Activity} from "components/Tabs/Activity"
 import {Goal} from "components/Tabs/Goal"
 import {Button} from "components/UI/Button"
 
-import {calorieTargetAtom, goalAtom} from "stores/Body"
+import {calorieTargetAtom, goalAtom} from "stores/Goal"
 import {tabAtom} from "stores/Navigation"
 
 export const ActivityGoalPage = () => {

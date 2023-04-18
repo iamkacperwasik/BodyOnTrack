@@ -1,8 +1,8 @@
 import {useAtomValue} from "jotai"
 
-import {calorieTargetAtom, goalAtom} from "stores/Body"
+import {useCaloriesPerDay} from "hooks/useCaloriesPerDay"
 
-import {useCaloriesPerDay} from "./useCaloriesPerDay"
+import {calorieTargetAtom, goalAtom} from "stores/Goal"
 
 export const useCalorieGoal = (): number => {
   const goal = useAtomValue(goalAtom)

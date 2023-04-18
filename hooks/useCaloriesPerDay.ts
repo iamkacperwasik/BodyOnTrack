@@ -3,13 +3,8 @@ import {useAtomValue} from "jotai"
 import {getAMR} from "formulas/AMR"
 import {getBMR} from "formulas/BMR"
 
-import {
-  activityLevelAtom,
-  ageAtom,
-  heightAtom,
-  sexAtom,
-  weightAtom,
-} from "stores/Body"
+import {activityLevelAtom} from "stores/Activity"
+import {ageAtom, heightAtom, sexAtom, weightAtom} from "stores/Body"
 
 export const useCaloriesPerDay = () => {
   const age = useAtomValue(ageAtom)
