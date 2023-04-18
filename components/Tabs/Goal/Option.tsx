@@ -1,7 +1,7 @@
 import {useAtom} from "jotai"
 import {PropsWithChildren} from "react"
 
-import {goalAtom} from "stores/Body"
+import {goalAtom} from "stores/Goal"
 
 export const Option = ({children, goal}: PropsWithChildren<{goal: Goal}>) => {
   const [currentGoal, setGoal] = useAtom(goalAtom)

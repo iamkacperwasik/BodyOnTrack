@@ -5,7 +5,7 @@ import {Option} from "components/Tabs/Goal/Option"
 import {Heading} from "components/UI/Heading"
 import {Input} from "components/UI/Input"
 
-import {calorieTargetAtom, goalAtom} from "stores/Body"
+import {calorieTargetAtom, goalAtom} from "stores/Goal"
 
 export const Goal = () => {
   const [calorieTarget, setCalorieTarget] = useAtom(calorieTargetAtom)

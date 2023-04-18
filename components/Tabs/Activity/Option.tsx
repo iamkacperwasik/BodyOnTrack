@@ -1,7 +1,7 @@
 import {useAtom} from "jotai"
 import {PropsWithChildren} from "react"
 
-import {activityLevelAtom} from "stores/Body"
+import {activityLevelAtom} from "stores/Activity"
 
 export const Option = ({
   children,
