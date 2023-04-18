@@ -27,6 +27,7 @@ export const Goal = () => {
             goal === "GAIN_WEIGHT" ? "Nadwyżka kalorii" : "Deficyt kalorii"
           }
           state={[calorieTarget, setCalorieTarget]}
+          max={1000}
         />
       </When>
     </>

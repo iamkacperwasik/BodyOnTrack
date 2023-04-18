@@ -1,10 +1,11 @@
-import {useAtom} from "jotai"
+import {useAtom, useSetAtom} from "jotai"
 import {PropsWithChildren} from "react"
 
-import {goalAtom} from "stores/Goal"
+import {calorieTargetAtom, goalAtom} from "stores/Goal"
 
 export const Option = ({children, goal}: PropsWithChildren<{goal: Goal}>) => {
   const [currentGoal, setGoal] = useAtom(goalAtom)
+  const setCalorieTarget = useSetAtom(calorieTargetAtom)
 
   const isCurrent = currentGoal === goal
 
@@ -13,7 +14,10 @@ export const Option = ({children, goal}: PropsWithChildren<{goal: Goal}>) => {
       className={
         isCurrent ? "cursor-pointer font-bold underline" : "cursor-pointer"
       }
-      onClick={() => setGoal(goal)}
+      onClick={() => {
+        setGoal(goal)
+        setCalorieTarget(null)
+      }}
     >
       {children}
     </p>
