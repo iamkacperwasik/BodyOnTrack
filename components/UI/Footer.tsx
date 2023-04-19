@@ -1,9 +1,9 @@
 import Link from "next/link"
 
-const Footer = () => (
-  <footer className="my-2 flex items-center gap-8">
+export const Footer = () => (
+  <footer className="flex gap-8 p-4 text-white">
     <div>
-      <span>Made by </span>
+      <span>Autor: </span>
       <Link
         href="https://github.com/iamkacperwasik"
         target="_blank"
@@ -22,5 +22,3 @@ const Footer = () => (
     </div>
   </footer>
 )
-
-export default Footer

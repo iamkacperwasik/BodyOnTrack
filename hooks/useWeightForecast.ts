@@ -1,33 +1,30 @@
+import {useAtomValue} from "jotai"
+
 import {arrayOfSize} from "util/Array"
 
-import useBodyInfoStore from "stores/BodyInfo"
-import useCalculationsStore from "stores/Calculations"
+import {weightAtom} from "stores/Body"
+import {calorieTargetAtom, goalAtom} from "stores/Goal"
 
 const FAT_CALORIES = 7700
 
-const useWeightForecast = (weeks: number) => {
-  const {goal, surplus, deficit} = useCalculationsStore()
-  const {weight} = useBodyInfoStore()
+export const useWeightForecast = (days: number): number[] => {
+  const weight = useAtomValue(weightAtom)!
+  const goal = useAtomValue(goalAtom)!
+  const calorieTarget = useAtomValue(calorieTargetAtom)!
 
-  if (!weight) return {forecast: []}
+  if (goal === "MAINTAIN") {
+    return [weight]
+  }
 
-  if (goal === "GAIN_WEIGHT")
-    return {
-      forecast: arrayOfSize(weeks)
-        .map((_, i) => surplus * i * 7)
-        .map((calories) => calories / FAT_CALORIES) // gained weight
-        .map((gainedWeight) => weight! + gainedWeight),
-    }
+  return arrayOfSize(days)
+    .map((_, daysPassed) => {
+      if (goal === "GAIN_WEIGHT") {
+        return (calorieTarget * daysPassed) / FAT_CALORIES
+      }
 
-  if (goal === "LOSE_WEIGHT")
-    return {
-      forecast: arrayOfSize(weeks)
-        .map((_, i) => deficit * i * 7)
-        .map((calories) => calories / FAT_CALORIES) // lost weight
-        .map((lostWeight) => weight! - lostWeight),
-    }
-
-  return {forecast: arrayOfSize(weeks).map(() => weight) as number[]} // LINEAR
+      return (-calorieTarget * daysPassed) / FAT_CALORIES
+    })
+    .map((gainedWeight) => {
+      return weight! + gainedWeight
+    })
 }
-
-export default useWeightForecast
