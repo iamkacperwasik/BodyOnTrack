@@ -1,27 +1,25 @@
 import {TableRow} from "components/Tabs/Calculations/TableRow"
 
+import {useWeightForecast} from "hooks/useWeightForecast"
+
 export const Calculations = () => {
+  const forecast = useWeightForecast(10)
+
   return (
     <table className="">
       <thead>
         <tr className="text-2xl">
-          <th className="pr-16 text-left">Dzień</th>
-          <th className="pr-16 text-left">Waga</th>
-          <th className="pr-16 text-left">BMI</th>
-          <th className="pr-16 text-left">Nadwyżka/Deficyt</th>
-          <th className="pr-16 text-left">Podaż kalorii</th>
+          <th className="pr-8 text-left">Dzień</th>
+          <th className="px-8 text-left">Waga</th>
+          <th className="px-8 text-left">BMI</th>
+          <th className="px-8 text-left">Podaż kalorii</th>
         </tr>
       </thead>
 
       <tbody>
-        <TableRow
-          date={new Date()}
-          bmi={23.41}
-          caloriesPerDay={2300}
-          target={400}
-          weight={80.3}
-          goal="GAIN_WEIGHT"
-        />
+        {forecast.map((weight, day) => {
+          return <TableRow key={day} day={day} weight={weight} />
+        })}
       </tbody>
     </table>
   )

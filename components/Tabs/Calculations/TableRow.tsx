@@ -1,51 +1,61 @@
+import {useAtomValue} from "jotai"
 import {When} from "react-if"
+
+import {getAMR} from "formulas/AMR"
+import {getBMI} from "formulas/BMI"
+import {getBMR} from "formulas/BMR"
 
 import {formatFloat} from "util/Number"
 
+import {activityLevelAtom} from "stores/Activity"
+import {ageAtom, heightAtom, sexAtom} from "stores/Body"
+import {calorieTargetAtom, goalAtom} from "stores/Goal"
+
 type Props = {
-  date: Date
+  day: number
   weight: number
-  bmi: number
-  target: number
-  caloriesPerDay: number
-  goal: Goal
 }
 
-export const TableRow = ({
-  bmi,
-  caloriesPerDay,
-  date,
-  target,
-  weight,
-  goal,
-}: Props) => (
-  <tr className="font-mono text-lg">
-    <td className="">
-      <span>{date.toLocaleDateString()}</span>
-    </td>
-    <td className="">
-      <span>{formatFloat(weight)} kg</span>
-    </td>
-    <td className="flex items-center gap-2">
-      <span>{formatFloat(bmi)}</span>
+export const TableRow = ({day, weight}: Props) => {
+  const age = useAtomValue(ageAtom)!
+  const height = useAtomValue(heightAtom)!
+  const activityLevel = useAtomValue(activityLevelAtom)!
+  const sex = useAtomValue(sexAtom)!
+  const goal = useAtomValue(goalAtom)!
+  const calorieTarget = useAtomValue(calorieTargetAtom)!
 
-      <div className="relative h-[12px] w-[12px] rounded-sm bg-green-300" />
-    </td>
-    <td className="">
-      <When condition={goal === "MAINTAIN"}>
-        <span className="text-sm text-gray-400">-</span>
-      </When>
+  const date = new Date(Date.now() + day * 24 * 60 * 60 * 1000)
+  const bmi = getBMI(weight, height)
 
-      <When condition={goal === "LOSE_WEIGHT"}>
-        <span className="text-sm text-gray-400">- </span>
-        <span>{formatFloat(target)} kcal</span>
-      </When>
+  const bmr = getBMR(sex, weight, height, age)
+  const amr = getAMR(bmr, activityLevel)
 
-      <When condition={goal === "GAIN_WEIGHT"}>
-        <span className="text-sm text-gray-400">+ </span>
-        <span>{formatFloat(target)} kcal</span>
-      </When>
-    </td>
-    <td className="">{formatFloat(caloriesPerDay)} kcal</td>
-  </tr>
-)
+  return (
+    <tr className="font-mono text-lg">
+      <td className="pr-8">
+        <span>{date.toLocaleDateString()}</span>
+      </td>
+      <td className="px-8">
+        <span>{formatFloat(weight)} kg</span>
+      </td>
+      <td className="flex items-center gap-2 px-8">
+        <span>{formatFloat(bmi)}</span>
+
+        <div className="relative h-[12px] w-[12px] rounded-sm bg-green-300" />
+      </td>
+      <td className="px-8">
+        <When condition={goal === "MAINTAIN"}>
+          <span>{formatFloat(amr + calorieTarget)}</span>
+        </When>
+
+        <When condition={goal === "LOSE_WEIGHT"}>
+          <span>{formatFloat(amr - calorieTarget)}</span>
+        </When>
+
+        <When condition={goal === "GAIN_WEIGHT"}>
+          <span>{formatFloat(amr)}</span>
+        </When>
+      </td>
+    </tr>
+  )
+}
