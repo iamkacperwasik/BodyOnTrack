@@ -3,6 +3,7 @@ import Head from "next/head"
 
 import {Body} from "components/Tabs/Body"
 import {Button} from "components/UI/Button"
+import {Footer} from "components/UI/Footer"
 
 import {ageAtom, heightAtom, weightAtom} from "stores/Body"
 import {tabAtom} from "stores/Navigation"
@@ -22,7 +23,7 @@ export const BodyPage = () => {
         <meta name="robots" content="noindex" />
       </Head>
 
-      <div className="flex min-h-screen justify-center bg-[#111111f9] text-white">
+      <div className="flex min-h-screen flex-col items-center bg-[#111111f9] text-white">
         <div className="flex min-w-[600px] flex-col gap-8 p-8">
           <Body />
 
@@ -35,6 +36,8 @@ export const BodyPage = () => {
             </Button>
           </div>
         </div>
+
+        <Footer />
       </div>
     </>
   )
