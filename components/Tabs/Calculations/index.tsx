@@ -1,21 +1,29 @@
+import {useAtomValue} from "jotai"
 import {useState} from "react"
+import {Unless} from "react-if"
 
 import {TableRow} from "components/Tabs/Calculations/TableRow"
 import {Input} from "components/UI/Input"
 
 import {useWeightForecast} from "hooks/useWeightForecast"
 
+import {goalAtom} from "stores/Goal"
+
 export const Calculations = () => {
+  const goal = useAtomValue(goalAtom)
+
   const [days, setDays] = useState<number | null>(null)
 
   const forecast = useWeightForecast(days ?? 7)
 
   return (
     <>
-      <p className="text-2xl font-bold uppercase">
-        Na ile dni chcesz zobaczyć prognozę?
-      </p>
-      <Input state={[days, setDays]} placeholder="Ilość dni" />
+      <Unless condition={goal === "MAINTAIN"}>
+        <p className="text-2xl font-bold uppercase">
+          Na ile dni chcesz zobaczyć prognozę?
+        </p>
+        <Input state={[days, setDays]} placeholder="Ilość dni" />
+      </Unless>
 
       <table className="">
         <thead>
