@@ -3,7 +3,7 @@ import {TableRow} from "components/Tabs/Calculations/TableRow"
 import {useWeightForecast} from "hooks/useWeightForecast"
 
 export const Calculations = () => {
-  const forecast = useWeightForecast(10)
+  const forecast = useWeightForecast(100)
 
   return (
     <table className="">
@@ -13,6 +13,7 @@ export const Calculations = () => {
           <th className="px-8 text-left">Waga</th>
           <th className="px-8 text-left">BMI</th>
           <th className="px-8 text-left">Podaż kalorii</th>
+          <th className="px-8 text-left">CPM</th>
         </tr>
       </thead>
 

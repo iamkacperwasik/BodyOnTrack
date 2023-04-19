@@ -11,6 +11,8 @@ import {activityLevelAtom} from "stores/Activity"
 import {ageAtom, heightAtom, sexAtom} from "stores/Body"
 import {calorieTargetAtom, goalAtom} from "stores/Goal"
 
+import {BodyMassIndicator} from "./BodyMassIndicator"
+
 type Props = {
   day: number
   weight: number
@@ -32,7 +34,7 @@ export const TableRow = ({day, weight}: Props) => {
 
   return (
     <tr className="font-mono text-lg">
-      <td className="pr-8">
+      <td className="py-[3px] pr-8">
         <span>{date.toLocaleDateString()}</span>
       </td>
       <td className="px-8">
@@ -41,20 +43,23 @@ export const TableRow = ({day, weight}: Props) => {
       <td className="flex items-center gap-2 px-8">
         <span>{formatFloat(bmi)}</span>
 
-        <div className="relative h-[12px] w-[12px] rounded-sm bg-green-300" />
+        <BodyMassIndicator bmi={bmi} />
       </td>
-      <td className="px-8">
+      <td className="px-8 underline underline-offset-8">
         <When condition={goal === "MAINTAIN"}>
-          <span>{formatFloat(amr + calorieTarget)}</span>
+          <span>{formatFloat(amr + calorieTarget)} kcal</span>
         </When>
 
         <When condition={goal === "LOSE_WEIGHT"}>
-          <span>{formatFloat(amr - calorieTarget)}</span>
+          <span>{formatFloat(amr - calorieTarget)} kcal</span>
         </When>
 
         <When condition={goal === "GAIN_WEIGHT"}>
-          <span>{formatFloat(amr)}</span>
+          <span>{formatFloat(amr)} kcal</span>
         </When>
+      </td>
+      <td className="px-8">
+        <span>{formatFloat(amr)}</span>
       </td>
     </tr>
   )
