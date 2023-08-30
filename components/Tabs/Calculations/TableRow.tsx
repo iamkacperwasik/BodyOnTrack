@@ -1,5 +1,4 @@
 import {useAtomValue} from "jotai"
-import {When} from "react-if"
 
 import {getAMR} from "formulas/AMR"
 import {getBMI} from "formulas/BMI"
@@ -46,17 +45,15 @@ export const TableRow = ({day, weight}: Props) => {
         <BodyMassIndicator bmi={bmi} />
       </td>
       <td className="px-8 underline underline-offset-8">
-        <When condition={goal === "MAINTAIN"}>
+        {goal === "MAINTAIN" && (
           <span>{formatFloat(amr + calorieTarget)} kcal</span>
-        </When>
+        )}
 
-        <When condition={goal === "LOSE_WEIGHT"}>
+        {goal === "LOSE_WEIGHT" && (
           <span>{formatFloat(amr - calorieTarget)} kcal</span>
-        </When>
+        )}
 
-        <When condition={goal === "GAIN_WEIGHT"}>
-          <span>{formatFloat(amr)} kcal</span>
-        </When>
+        {goal === "GAIN_WEIGHT" && <span>{formatFloat(amr)} kcal</span>}
       </td>
       <td className="px-8">
         <span>{formatFloat(amr)}</span>

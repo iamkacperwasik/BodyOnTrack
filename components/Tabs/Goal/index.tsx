@@ -1,5 +1,4 @@
 import {useAtom, useAtomValue} from "jotai"
-import {When} from "react-if"
 
 import {Option} from "components/Tabs/Goal/Option"
 import {Heading} from "components/UI/Heading"
@@ -21,7 +20,7 @@ export const Goal = () => {
         <Option goal="LOSE_WEIGHT">Schudnąć</Option>
       </div>
 
-      <When condition={goal !== "MAINTAIN"}>
+      {goal !== "MAINTAIN" && (
         <Input
           placeholder={
             goal === "GAIN_WEIGHT" ? "Nadwyżka kalorii" : "Deficyt kalorii"
@@ -29,7 +28,7 @@ export const Goal = () => {
           state={[calorieTarget, setCalorieTarget]}
           max={1000}
         />
-      </When>
+      )}
     </>
   )
 }

@@ -1,6 +1,5 @@
 import {useAtomValue} from "jotai"
 import {useState} from "react"
-import {Unless} from "react-if"
 
 import {BodyInfo} from "components/Tabs/Calculations/BodyInfo"
 import {TableRow} from "components/Tabs/Calculations/TableRow"
@@ -21,12 +20,14 @@ export const Calculations = () => {
     <>
       <BodyInfo />
 
-      <Unless condition={goal === "MAINTAIN"}>
-        <p className="text-2xl font-bold uppercase">
-          Na ile dni chcesz zobaczyć prognozę?
-        </p>
-        <Input state={[days, setDays]} placeholder="Ilość dni" />
-      </Unless>
+      {(goal === "LOSE_WEIGHT" || goal === "GAIN_WEIGHT") && (
+        <>
+          <p className="text-2xl font-bold uppercase">
+            Na ile dni chcesz zobaczyć prognozę?
+          </p>
+          <Input state={[days, setDays]} placeholder="Ilość dni" />
+        </>
+      )}
 
       <table className="">
         <thead>
