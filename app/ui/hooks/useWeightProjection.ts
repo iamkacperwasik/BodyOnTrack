@@ -6,6 +6,40 @@ import {goal_atom} from "ui/atoms/goal/Goal"
 const CALORIES_PER_POUND_OF_FAT = 7700
 
 /**
+ * Calculate the daily weight change based on the user's goal and calorie target.
+ *
+ * @param {string} user_goal - User's weight goal ("GAIN_WEIGHT" or "LOSE_WEIGHT")
+ * @param {number} daily_calorie_target - Daily calorie target
+ * @returns {number} - Daily weight change
+ */
+const calculate_daily_weight_change = (
+  user_goal: "GAIN_WEIGHT" | "LOSE_WEIGHT",
+  daily_calorie_target: number
+): number => {
+  if (user_goal === "GAIN_WEIGHT") {
+    return daily_calorie_target / CALORIES_PER_POUND_OF_FAT
+  } else {
+    return -(daily_calorie_target / CALORIES_PER_POUND_OF_FAT)
+  }
+}
+
+/**
+ * Calculate the projected weight for a specific day.
+ *
+ * @param {number} current_weight - Current weight
+ * @param {number} daily_weight_change - Daily weight change
+ * @param {number} days_passed - Number of days passed
+ * @returns {number} - Projected weight for the specific day
+ */
+const calculate_projected_weight = (
+  current_weight: number,
+  daily_weight_change: number,
+  days_passed: number
+): number => {
+  return current_weight + daily_weight_change * days_passed
+}
+
+/**
  * Calculate the projected weight over a number of days based on the user's goal and calorie target.
  *
  * @param {number} days - Number of days to project weight for
@@ -27,15 +61,17 @@ export const useWeightProjection = (days: number): number[] => {
   }
 
   // Calculate the daily weight change based on the user's goal
-  const daily_weight_change =
-    user_goal === "GAIN_WEIGHT"
-      ? daily_calorie_target / CALORIES_PER_POUND_OF_FAT
-      : -(daily_calorie_target / CALORIES_PER_POUND_OF_FAT)
+  const daily_weight_change = calculate_daily_weight_change(
+    user_goal,
+    daily_calorie_target
+  )
 
   // Generate an array of projected weights for each day
-  return Array.from(
-    {length: days},
-    (_, days_passed) =>
-      (current_weight || 0) + daily_weight_change * days_passed
+  return Array.from({length: days}, (_, days_passed) =>
+    calculate_projected_weight(
+      current_weight || 0,
+      daily_weight_change,
+      days_passed
+    )
   )
 }
