@@ -1,4 +1,4 @@
-import type {Gender} from "ui/atoms/body/Gender"
+import type {Gender} from "atoms/body/Gender"
 
 // Calculate Basal Metabolic Rate (BMR)
 
