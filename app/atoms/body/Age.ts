@@ -1,4 +1,4 @@
-import {atom} from "jotai"
+import {atomWithStorage} from "jotai/utils"
 
 import {WithErrorNumberOrNull} from "atoms/WithError"
 
@@ -7,7 +7,7 @@ import {WithErrorNumberOrNull} from "atoms/WithError"
  * or an object with both the age and an error message.
  */
 
-export const age_atom = atom<WithErrorNumberOrNull>({
+export const age_atom = atomWithStorage<WithErrorNumberOrNull>("age", {
   value: null,
   error: null,
 })

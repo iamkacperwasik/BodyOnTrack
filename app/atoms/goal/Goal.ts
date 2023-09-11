@@ -1,4 +1,4 @@
-import {atom} from "jotai"
+import {atomWithStorage} from "jotai/utils"
 
 export type WeightGoal = "MAINTAIN" | "LOSE_WEIGHT" | "GAIN_WEIGHT"
 
@@ -10,4 +10,4 @@ export type WeightGoal = "MAINTAIN" | "LOSE_WEIGHT" | "GAIN_WEIGHT"
  * - "LOSE_WEIGHT": Indicates the goal is to lose weight.
  * - "GAIN_WEIGHT": Indicates the goal is to gain weight.
  */
-export const goal_atom = atom<WeightGoal>("MAINTAIN")
+export const goal_atom = atomWithStorage<WeightGoal>("goal", "MAINTAIN")

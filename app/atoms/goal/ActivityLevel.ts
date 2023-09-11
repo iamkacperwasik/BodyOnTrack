@@ -1,4 +1,4 @@
-import {atom} from "jotai"
+import {atomWithStorage} from "jotai/utils"
 
 export type ActivityLevel =
   | "SEDENTARY"
@@ -17,4 +17,7 @@ export type ActivityLevel =
  * - "VERY_ACTIVE": Indicates high levels of physical activity or exercise.
  * - "EXTREMELY_ACTIVE": Indicates very high levels of physical activity or exercise.
  */
-export const activity_level_atom = atom<ActivityLevel>("SEDENTARY")
+export const activity_level_atom = atomWithStorage<ActivityLevel>(
+  "activity_level",
+  "SEDENTARY"
+)
