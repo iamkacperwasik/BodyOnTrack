@@ -23,7 +23,7 @@ export const GenderSelect = () => {
         name="gender"
         value={gender}
         onChange={handle_gender_change}
-        className="w-full rounded-md border border-gray-600 bg-gray-900 px-4 py-2 text-white"
+        className="w-full rounded-md border border-gray-600 bg-black px-4 py-2 text-white"
       >
         <option value="Male">Male</option>
         <option value="Female">Female</option>

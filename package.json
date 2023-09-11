@@ -33,10 +33,12 @@
     "importOrder": [
       "^components/select/(.*)$",
       "^components/input/(.*)$",
+      "^components/form/(.*)$",
       "^formulas/(.*)$",
       "^hooks/(.*)$",
       "^atoms/goal/(.*)$",
       "^atoms/body/(.*)$",
+      "^atoms/(.*)$",
       "^[./]"
     ],
     "importOrderSeparation": true,

@@ -26,7 +26,7 @@ export const ActivityLevelSelect = () => {
         name="activity-level"
         value={activity_level}
         onChange={handle_activity_level_select}
-        className="w-full rounded-md border border-gray-600 bg-gray-900 px-4 py-2 text-white"
+        className="w-full rounded-md border border-gray-600 bg-black px-4 py-2 text-white"
       >
         <option value="SEDENTARY">
           Sedentary (little or no physical activity)

@@ -1,7 +1,7 @@
 import {useAtomValue} from "jotai"
 
 import {calorie_target_atom} from "atoms/goal/CalorieTarget"
-import {goal_atom} from "atoms/goal/Goal"
+import {WeightGoal, goal_atom} from "atoms/goal/Goal"
 
 import {weight_atom} from "atoms/body/Weight"
 
@@ -10,12 +10,12 @@ const CALORIES_PER_POUND_OF_FAT = 7700
 /**
  * Calculate the daily weight change based on the user's goal and calorie target.
  *
- * @param {string} user_goal - User's weight goal ("GAIN_WEIGHT" or "LOSE_WEIGHT")
+ * @param {WeightGoal} user_goal - User's weight goal ("GAIN_WEIGHT" or "LOSE_WEIGHT")
  * @param {number} daily_calorie_target - Daily calorie target
  * @returns {number} - Daily weight change
  */
 const calculate_daily_weight_change = (
-  user_goal: "GAIN_WEIGHT" | "LOSE_WEIGHT",
+  user_goal: WeightGoal,
   daily_calorie_target: number
 ): number => {
   if (user_goal === "GAIN_WEIGHT") {
@@ -56,10 +56,10 @@ export const useWeightProjection = (days: number): number[] => {
   // If the goal is to "MAINTAIN" or if any data is missing, return the current weight or 0 if null
   if (
     user_goal === "MAINTAIN" ||
-    current_weight === null ||
+    current_weight.value === null ||
     daily_calorie_target === null
   ) {
-    return [current_weight || 0]
+    return [current_weight.value || 0]
   }
 
   // Calculate the daily weight change based on the user's goal
@@ -71,7 +71,7 @@ export const useWeightProjection = (days: number): number[] => {
   // Generate an array of projected weights for each day
   return Array.from({length: days}, (_, days_passed) =>
     calculate_projected_weight(
-      current_weight || 0,
+      current_weight.value || 0,
       daily_weight_change,
       days_passed
     )
