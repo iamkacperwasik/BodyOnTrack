@@ -31,11 +31,12 @@
   },
   "prettier": {
     "importOrder": [
-      "^components/(.*)$",
+      "^components/select/(.*)$",
+      "^components/input/(.*)$",
       "^formulas/(.*)$",
       "^hooks/(.*)$",
-      "^util/(.*)$",
-      "^stores/(.*)$",
+      "^atoms/goal/(.*)$",
+      "^atoms/body/(.*)$",
       "^[./]"
     ],
     "importOrderSeparation": true,

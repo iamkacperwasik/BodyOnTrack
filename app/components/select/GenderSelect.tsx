@@ -1,6 +1,7 @@
-import {Gender, gender_atom} from "atoms/body/Gender"
 import {useAtom} from "jotai"
 import {ChangeEvent} from "react"
+
+import {Gender, gender_atom} from "atoms/body/Gender"
 
 export const GenderSelect = () => {
   const [gender, set_gender] = useAtom(gender_atom)

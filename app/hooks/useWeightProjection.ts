@@ -1,7 +1,9 @@
-import {weight_atom} from "atoms/body/Weight"
+import {useAtomValue} from "jotai"
+
 import {calorie_target_atom} from "atoms/goal/CalorieTarget"
 import {goal_atom} from "atoms/goal/Goal"
-import {useAtomValue} from "jotai"
+
+import {weight_atom} from "atoms/body/Weight"
 
 const CALORIES_PER_POUND_OF_FAT = 7700
 

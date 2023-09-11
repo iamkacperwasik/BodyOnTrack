@@ -1,6 +1,7 @@
-import {age_atom} from "atoms/body/Age"
 import {useAtom} from "jotai"
 import {ChangeEvent} from "react"
+
+import {age_atom} from "atoms/body/Age"
 
 export const AgeInput = () => {
   const [age, set_age] = useAtom(age_atom)

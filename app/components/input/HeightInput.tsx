@@ -1,6 +1,7 @@
-import {height_atom} from "atoms/body/Height"
 import {useAtom} from "jotai"
 import {ChangeEvent} from "react"
+
+import {height_atom} from "atoms/body/Height"
 
 export const HeightInput = () => {
   const [height, set_height] = useAtom(height_atom)

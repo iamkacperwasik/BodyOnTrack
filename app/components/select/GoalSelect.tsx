@@ -1,6 +1,7 @@
-import {WeightGoal, goal_atom} from "atoms/goal/Goal"
 import {useAtom} from "jotai"
 import {ChangeEvent} from "react"
+
+import {WeightGoal, goal_atom} from "atoms/goal/Goal"
 
 export const GoalSelect = () => {
   const [goal, set_goal] = useAtom(goal_atom)

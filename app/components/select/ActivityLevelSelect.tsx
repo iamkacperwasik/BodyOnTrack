@@ -1,7 +1,8 @@
-import {activity_level_atom} from "atoms/goal/ActivityLevel"
-import {ActivityLevel} from "atoms/goal/ActivityLevel"
 import {useAtom} from "jotai"
 import {ChangeEvent} from "react"
+
+import {activity_level_atom} from "atoms/goal/ActivityLevel"
+import {ActivityLevel} from "atoms/goal/ActivityLevel"
 
 export const ActivityLevelSelect = () => {
   const [activity_level, set_activity_level] = useAtom(activity_level_atom)

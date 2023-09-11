@@ -1,11 +1,12 @@
 "use client"
 
-import {AgeInput} from "components/input/AgeInput"
-import {HeightInput} from "components/input/HeightInput"
-import {WeightInput} from "components/input/WeightInput"
 import {ActivityLevelSelect} from "components/select/ActivityLevelSelect"
 import {GenderSelect} from "components/select/GenderSelect"
 import {GoalSelect} from "components/select/GoalSelect"
+
+import {AgeInput} from "components/input/AgeInput"
+import {HeightInput} from "components/input/HeightInput"
+import {WeightInput} from "components/input/WeightInput"
 
 export default function Home() {
   return (

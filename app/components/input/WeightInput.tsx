@@ -1,6 +1,7 @@
-import {weight_atom} from "atoms/body/Weight"
 import {useAtom} from "jotai"
 import {ChangeEvent} from "react"
+
+import {weight_atom} from "atoms/body/Weight"
 
 export const WeightInput = () => {
   const [weight, set_weight] = useAtom(weight_atom)
