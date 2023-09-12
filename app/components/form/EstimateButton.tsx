@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import {useAtomValue} from "jotai"
 
 import {age_atom} from "atoms/body/Age"
@@ -20,9 +21,12 @@ export const EstimateButton = () => {
   return (
     <button
       type="submit"
-      className={`rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 ${
-        disabled ? "cursor-not-allowed opacity-50" : ""
-      }`}
+      className={clsx(
+        "w-full rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700",
+        {
+          "cursor-not-allowed opacity-50": disabled,
+        }
+      )}
       disabled={disabled}
     >
       Estimate
