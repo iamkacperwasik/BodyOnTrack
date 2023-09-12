@@ -13,13 +13,11 @@ export default function Home() {
   const is_all_data_provided = useAtomValue(is_all_data_provided_atom)
   const form_submitted = useAtomValue(form_submitted_atom)
 
-  return (
-    <div>
-      {!is_all_data_provided || !form_submitted ? (
-        <ProfileForm />
-      ) : (
-        <EstimationDisplay />
-      )}
-    </div>
-  )
+  const should_render_profile_form = !is_all_data_provided || !form_submitted
+
+  if (should_render_profile_form) {
+    return <ProfileForm />
+  } else {
+    return <EstimationDisplay />
+  }
 }
