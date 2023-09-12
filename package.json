@@ -35,10 +35,13 @@
       "^components/select/(.*)$",
       "^components/input/(.*)$",
       "^components/form/(.*)$",
+      "^components/buttons/(.*)$",
+      "^components/estimation/(.*)$",
       "^formulas/(.*)$",
       "^hooks/(.*)$",
       "^atoms/goal/(.*)$",
       "^atoms/body/(.*)$",
+      "^atoms/form/(.*)$",
       "^atoms/(.*)$",
       "^[./]"
     ],
