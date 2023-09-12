@@ -37,6 +37,7 @@ export const WeightInput = () => {
         placeholder="Enter weight"
         min="0"
         max="200"
+        step="any"
         value={weight.value || ""}
         onChange={handle_weight_input}
         className="w-full rounded-md border border-gray-600 bg-black px-4 py-2 text-white"
