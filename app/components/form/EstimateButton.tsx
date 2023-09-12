@@ -10,13 +10,12 @@ export const EstimateButton = () => {
   const {value: height_value, error: height_error} = useAtomValue(height_atom)
   const {value: weight_value, error: weight_error} = useAtomValue(weight_atom)
 
-  const disabled =
-    age_value === null ||
-    height_value === null ||
-    weight_value === null ||
-    age_error !== null ||
-    height_error !== null ||
-    weight_error !== null
+  const has_null_values =
+    age_value === null || height_value === null || weight_value === null
+  const has_errors =
+    age_error !== null || height_error !== null || weight_error !== null
+
+  const disabled = has_null_values || has_errors
 
   return (
     <button
