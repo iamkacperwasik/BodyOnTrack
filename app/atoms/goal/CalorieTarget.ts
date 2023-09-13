@@ -1,6 +1,8 @@
-import {atom} from "jotai"
+import {atomWithStorage} from "jotai/utils"
 
 /**
- * This atom can contain either a number representing the daily calorie target or null if the target is not available.
+ * This atom is used to store the user's calorie target.
+ * The calorie target can be in the range of 0 to 1000.
+ * The default value is 0.
  */
-export const calorie_target_atom = atom<null | number>(null)
+export const calorie_target_atom = atomWithStorage<number>("calorie_target", 0)
