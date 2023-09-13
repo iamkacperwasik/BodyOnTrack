@@ -1,20 +1,17 @@
-import {useSetAtom} from "jotai"
-
-import {form_submitted_atom} from "atoms/form/FormSubmitted"
+import {EditProfileButton} from "components/buttons/EditProfileButton"
 
 export const EstimationDisplay = () => {
-  const set_form_submitted = useSetAtom(form_submitted_atom)
-
   return (
-    <div className="mt-8 text-center text-white">
-      <p>All data is okay!</p>
+    <div className="container mx-auto mt-8 flex max-w-2xl items-baseline justify-between rounded-lg p-4 text-xl text-white">
+      <div>
+        <h1 className="mb-4 text-2xl font-semibold">
+          Body Profile Estimations
+        </h1>
+      </div>
 
-      <button
-        className="ml-2 rounded-md bg-red-600 px-2 py-1 text-white"
-        onClick={() => set_form_submitted(false)}
-      >
-        Change settings
-      </button>
+      <div className="flex items-center">
+        <EditProfileButton />
+      </div>
     </div>
   )
 }
