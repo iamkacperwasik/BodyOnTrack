@@ -37,6 +37,7 @@
       "^components/form/(.*)$",
       "^components/buttons/(.*)$",
       "^components/estimation/(.*)$",
+      "^components/popover/(.*)$",
       "^formulas/(.*)$",
       "^hooks/(.*)$",
       "^atoms/goal/(.*)$",
