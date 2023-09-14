@@ -1,15 +1,11 @@
 import {useAtom, useAtomValue} from "jotai"
 
 import {calorie_target_atom} from "atoms/goal/CalorieTarget"
-import {goal_atom} from "atoms/goal/Goal"
+import {WeightGoal, goal_atom} from "atoms/goal/Goal"
 
 export const CalorieTargetSlider: React.FC = () => {
   const weight_goal = useAtomValue(goal_atom)
   const [calorie_target, set_calorie_target] = useAtom(calorie_target_atom)
-
-  if (weight_goal === "MAINTAIN") {
-    return null
-  }
 
   const handle_slider_change = (e: React.ChangeEvent<HTMLInputElement>) => {
     set_calorie_target(parseInt(e.target.value))
@@ -20,7 +16,7 @@ export const CalorieTargetSlider: React.FC = () => {
     GAIN_WEIGHT: "Calorie Surplus",
   }
 
-  const label_text = labels[weight_goal]
+  const label_text = labels[weight_goal as Exclude<WeightGoal, "MAINTAIN">]
 
   return (
     <div className="mb-4 sm:w-1/2">
