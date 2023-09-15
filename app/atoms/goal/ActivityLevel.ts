@@ -21,3 +21,15 @@ export const activity_level_atom = atomWithStorage<ActivityLevel>(
   "activity_level",
   "SEDENTARY"
 )
+
+export const get_pal_multiplier = (activity_level: ActivityLevel) => {
+  const multipliers = {
+    SEDENTARY: 1.2,
+    LIGHTLY_ACTIVE: 1.375,
+    MODERATELY_ACTIVE: 1.55,
+    VERY_ACTIVE: 1.725,
+    EXTREMELY_ACTIVE: 1.9,
+  }
+
+  return multipliers[activity_level]
+}
