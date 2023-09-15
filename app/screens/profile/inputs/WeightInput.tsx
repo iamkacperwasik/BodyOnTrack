@@ -1,7 +1,7 @@
 import {useAtom} from "jotai"
 import {ChangeEvent} from "react"
 
-import {ErrorMessage} from "components/form/ErrorMessage"
+import {ErrorMessage} from "screens/profile/form/ErrorMessage"
 
 import {weight_atom} from "atoms/body/Weight"
 

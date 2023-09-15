@@ -2,7 +2,7 @@ import clsx from "clsx"
 import {useAtomValue} from "jotai"
 import {useState} from "react"
 
-import {BmiPopover} from "components/popover/BmiPopover"
+import {BmiPopover} from "screens/estimation/popovers/BmiPopover"
 
 import {calculate_bmi} from "formulas/Bmi"
 
@@ -30,6 +30,7 @@ export const BmiSection = () => {
       >
         {bmi_value.toFixed(2)}
       </p>
+
       <BmiPopover value={bmi_value} visible={show_popover} />
     </div>
   )

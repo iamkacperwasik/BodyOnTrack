@@ -1,13 +1,14 @@
 import {useAtomValue} from "jotai"
 
-import {EditProfileButton} from "components/buttons/EditProfileButton"
+import {EditProfileButton} from "screens/estimation/buttons/EditProfileButton"
 
-import {EstimationTable} from "components/estimation/EstimationTable"
-import {BmiSection} from "components/estimation/sections/BmiSection"
-import {BmrSection} from "components/estimation/sections/BmrSection"
-import {WeightGoalSection} from "components/estimation/sections/WeightGoalSection"
+import {CalorieTargetSlider} from "screens/estimation/sliders/CalorieTargetSlider"
 
-import {CalorieTargetSlider} from "components/sliders/CalorieTargetSlider"
+import {BmiSection} from "screens/estimation/sections/BmiSection"
+import {BmrSection} from "screens/estimation/sections/BmrSection"
+import {WeightGoalSection} from "screens/estimation/sections/WeightGoalSection"
+
+import {EstimationTable} from "screens/estimation/EstimationTable"
 
 import {goal_atom} from "atoms/goal/Goal"
 
