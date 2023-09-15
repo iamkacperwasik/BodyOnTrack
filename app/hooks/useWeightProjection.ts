@@ -1,79 +1,76 @@
 import {useAtomValue} from "jotai"
 
 import {calorie_target_atom} from "atoms/goal/CalorieTarget"
-import {WeightGoal, goal_atom} from "atoms/goal/Goal"
+import {goal_atom} from "atoms/goal/Goal"
 
 import {weight_atom} from "atoms/body/Weight"
 
+// Calories required to burn 1 kilogram of fat
 const CALORIES_PER_POUND_OF_FAT = 7700
 
 /**
- * Calculate the daily weight change based on the user's goal and calorie target.
+ * Calculate the daily weight change based on calorie targets and goals.
  *
- * @param {WeightGoal} user_goal - User's weight goal ("GAIN_WEIGHT" or "LOSE_WEIGHT")
- * @param {number} daily_calorie_target - Daily calorie target
- * @returns {number} - Daily weight change
+ * @param {number} calories - The daily calorie target.
+ * @param {string} goal - The weight goal ("LOSE_WEIGHT" or "GAIN_WEIGHT").
+ * @returns {number} The daily weight change.
  */
 const calculate_daily_weight_change = (
-  user_goal: WeightGoal,
-  daily_calorie_target: number
+  calories: number,
+  goal: string
 ): number => {
-  if (user_goal === "GAIN_WEIGHT") {
-    return daily_calorie_target / CALORIES_PER_POUND_OF_FAT
-  } else {
-    return -(daily_calorie_target / CALORIES_PER_POUND_OF_FAT)
-  }
+  // Determine the multiplier based on the goal (negative for weight loss, positive for weight gain)
+  const calorie_multiplier = goal === "LOSE_WEIGHT" ? -1 : 1
+
+  // Calculate the daily weight change
+  return (calories * calorie_multiplier) / CALORIES_PER_POUND_OF_FAT
 }
 
 /**
- * Calculate the projected weight for a specific day.
+ * Calculate projected weight changes over a specified number of days based on calorie targets and goals.
  *
- * @param {number} current_weight - Current weight
- * @param {number} daily_weight_change - Daily weight change
- * @param {number} days_passed - Number of days passed
- * @returns {number} - Projected weight for the specific day
+ * @param {number} days - The number of days for which to calculate projected weights.
+ * @param {number} initial_weight - The initial weight.
+ * @param {number} daily_weight_change - The daily weight change.
+ * @returns {number[]} An array of projected weights for each day.
  */
-const calculate_projected_weight = (
-  current_weight: number,
-  daily_weight_change: number,
-  days_passed: number
-): number => {
-  return current_weight + daily_weight_change * days_passed
-}
+const calculate_projected_weights = (
+  days: number,
+  initial_weight: number,
+  daily_weight_change: number
+): number[] => {
+  const projected_weights: number[] = Array.from(
+    {length: days},
+    (_, days_passed) => {
+      // Calculate the projected weight for each day by applying the daily weight change
+      const projected_weight =
+        initial_weight + daily_weight_change * (days_passed + 1)
 
-/**
- * Calculate the projected weight over a number of days based on the user's goal and calorie target.
- *
- * @param {number} days - Number of days to project weight for
- * @returns {number[]} - Array of projected weights for each day
- */
-export const useWeightProjection = (days: number): number[] => {
-  // Get the user's current weight, goal, and calorie target from atom values
-  const current_weight = useAtomValue(weight_atom)
-  const user_goal = useAtomValue(goal_atom)
-  const daily_calorie_target = useAtomValue(calorie_target_atom)
-
-  // If the goal is to "MAINTAIN" or if any data is missing, return the current weight or 0 if null
-  if (
-    user_goal === "MAINTAIN" ||
-    current_weight.value === null ||
-    daily_calorie_target === null
-  ) {
-    return [current_weight.value || 0]
-  }
-
-  // Calculate the daily weight change based on the user's goal
-  const daily_weight_change = calculate_daily_weight_change(
-    user_goal,
-    daily_calorie_target
+      return projected_weight
+    }
   )
 
-  // Generate an array of projected weights for each day
-  return Array.from({length: days}, (_, days_passed) =>
-    calculate_projected_weight(
-      current_weight.value || 0,
-      daily_weight_change,
-      days_passed
-    )
+  return projected_weights
+}
+
+/**
+ * Get an array of projected weights over a specified number of days.
+ *
+ * @param {number} days - The number of days for which to calculate projected weights.
+ * @returns {number[]} An array of projected weights for each day.
+ */
+export const useWeightProjection = (days: number): number[] => {
+  const initial_weight = useAtomValue(weight_atom)
+  const goal = useAtomValue(goal_atom)
+  const calories = useAtomValue(calorie_target_atom)
+
+  // Calculate the daily weight change based on calorie target and goal
+  const daily_weight_change = calculate_daily_weight_change(calories, goal)
+
+  // Calculate and return the projected weights
+  return calculate_projected_weights(
+    days,
+    initial_weight.value!,
+    daily_weight_change
   )
 }

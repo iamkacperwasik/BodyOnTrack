@@ -6,5 +6,10 @@ import {atomWithStorage} from "jotai/utils"
  *
  * This atom is used in the function that calculates the projected weight over a
  * specified number of days based on the user's goal and calorie target.
+ *
+ * The default value is 7.
  */
-export const days_atom = atomWithStorage<number>("days", 7)
+export const projection_days_atom = atomWithStorage<number>(
+  "projection_days",
+  7
+)

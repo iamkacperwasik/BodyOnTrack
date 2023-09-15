@@ -1,15 +1,33 @@
 import {useAtomValue} from "jotai"
 
 import {calculate_bmi} from "formulas/Bmi"
+import {calculate_bmr} from "formulas/Bmr"
 
+import {useWeightProjection} from "hooks/useWeightProjection"
+
+import {calorie_target_atom} from "atoms/goal/CalorieTarget"
+import {goal_atom} from "atoms/goal/Goal"
+
+import {age_atom} from "atoms/body/Age"
+import {gender_atom} from "atoms/body/Gender"
 import {height_atom} from "atoms/body/Height"
 
 export const EstimationTable = () => {
-  const {value: height_cm} = useAtomValue(height_atom)
+  const {value: height} = useAtomValue(height_atom)
+  const {value: age} = useAtomValue(age_atom)
+
+  const goal = useAtomValue(goal_atom)
+
+  const calorie_multiplier = goal === "LOSE_WEIGHT" ? -1 : 1
+
+  const gender = useAtomValue(gender_atom)
+  const weight_projection = useWeightProjection(7)
+  let calorie_target = useAtomValue(calorie_target_atom)
+
+  calorie_target *= calorie_multiplier
 
   const start_date = new Date()
   start_date.setDate(start_date.getDate() + 1)
-
   const offsets = Array.from({length: 7}, (_, i) => i)
 
   return (
@@ -19,7 +37,8 @@ export const EstimationTable = () => {
           <th className="py-3 text-left">Day</th>
           <th className="py-3 text-left">Weight</th>
           <th className="py-3 text-left">BMI</th>
-          <th className="py-3 text-left">Calories</th>
+          <th className="py-3 text-left">BMR</th>
+          <th className="py-3 text-left">Daily calories</th>
         </tr>
       </thead>
       <tbody>
@@ -33,15 +52,19 @@ export const EstimationTable = () => {
             year: "numeric",
           })
 
-          const weight = 80
-          const bmi = calculate_bmi(weight, height_cm!)
+          const weight = weight_projection.at(i)!
+          const bmi = calculate_bmi(weight, height!)
+          const bmr = calculate_bmr(gender, weight, height!, age!)
+
+          const calories = bmr + calorie_target
 
           return (
             <tr key={i}>
               <td className="py-2">{formatted_date}</td>
-              <td className="py-2">{weight.toFixed(2)} kg</td>
+              <td className="py-2">{weight.toFixed(1)} kg</td>
               <td className="py-2">{bmi.toFixed(2)}</td>
-              <td className="py-2">2000</td>
+              <td className="py-2">{bmr.toFixed(0)} kcal</td>
+              <td className="py-2">{calories.toFixed(0)} kcal</td>
             </tr>
           )
         })}
