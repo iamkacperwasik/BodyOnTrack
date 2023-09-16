@@ -1,4 +1,4 @@
-# Body On Count
+# Body On Track
 
 ## Calorie Calculator and Weight Predictor
 
@@ -7,7 +7,7 @@ Welcome to our Calorie Calculator and Weight Predictor! We're your trusted compa
 ## Getting Started
 
 1. Open a web browser.
-2. Go to [https://body-on-count.kacper.wasik.me](https://body-on-count.kacper.wasik.me).
+2. Go to [https://body-on-track.kacper.wasik.me](https://body-on-track.kacper.wasik.me).
 3. Start your journey towards a healthier you!
 
 ## Features
@@ -39,7 +39,7 @@ git clone https://github.com/iamkacperwasik/BodyOnTrack
 2. Navigate to the project directory:
 
 ```bash
-cd BodyOnCount
+cd BodyOnTrack
 ```
 
 3. Install dependencies using the npm package manager:
@@ -56,7 +56,7 @@ After installing dependencies, start the project with the following command:
 npm run dev
 ```
 
-This will launch the application on a local server. Open a web browser and go to http://localhost:3000 to use BodyOnCount.
+This will launch the application on a local server. Open a web browser and go to http://localhost:3000 to use BodyOnTrack.
 
 ### Building the Production Version
 

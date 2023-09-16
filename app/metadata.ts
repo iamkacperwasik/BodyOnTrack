@@ -1,7 +1,7 @@
 import {Metadata} from "next"
 
 export const metadata: Metadata = {
-  title: "Body on count",
+  title: "Body On Track",
   description:
     "Welcome to our Calorie Calculator and Weight Predictor! We're your trusted companion on your journey towards a healthier, happier you. Our easy-to-use tools empower you to make informed decisions about your diet and fitness goals.",
   authors: {name: "Kacper Wąsik", url: "https://kacper.wasik.me"},
