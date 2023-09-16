@@ -36,6 +36,7 @@
       "^screens/estimation/popovers/(.*)$",
       "^screens/estimation/sliders/(.*)$",
       "^screens/estimation/sections/(.*)$",
+      "^screens/estimation/tables/(.*)$",
       "^screens/profile/buttons/(.*)$",
       "^screens/profile/form/(.*)$",
       "^screens/profile/inputs/(.*)$",

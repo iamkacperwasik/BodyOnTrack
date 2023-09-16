@@ -8,9 +8,11 @@ import {BmiSection} from "screens/estimation/sections/BmiSection"
 import {BmrSection} from "screens/estimation/sections/BmrSection"
 import {WeightGoalSection} from "screens/estimation/sections/WeightGoalSection"
 
-import {EstimationTable} from "screens/estimation/EstimationTable"
+import {EstimationTable} from "screens/estimation/tables/EstimationTable"
 
 import {goal_atom} from "atoms/goal/Goal"
+
+import {ShowMoreButton} from "./buttons/ShowMoreButton"
 
 export const EstimationDisplay = () => {
   // Get the current weight goal from the `goal_atom` Jotai atom
@@ -34,6 +36,7 @@ export const EstimationDisplay = () => {
             <div className="my-8 h-1 w-full rounded-full bg-gray-300" />
             <CalorieTargetSlider />
             <EstimationTable />
+            <ShowMoreButton />
           </>
         )}
       </div>

@@ -1,4 +1,4 @@
-import {atomWithStorage} from "jotai/utils"
+import {atom} from "jotai"
 
 /**
  * An atom representing the number of days used to calculate the projected weight
@@ -9,7 +9,4 @@ import {atomWithStorage} from "jotai/utils"
  *
  * The default value is 7.
  */
-export const projection_days_atom = atomWithStorage<number>(
-  "projection_days",
-  7
-)
+export const projection_days_atom = atom<number>(7)
