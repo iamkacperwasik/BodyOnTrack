@@ -4,8 +4,8 @@ import {EditProfileButton} from "screens/estimation/buttons/EditProfileButton"
 
 import {CalorieTargetSlider} from "screens/estimation/sliders/CalorieTargetSlider"
 
+import {AmrSection} from "screens/estimation/sections/AmrSection"
 import {BmiSection} from "screens/estimation/sections/BmiSection"
-import {BmrSection} from "screens/estimation/sections/BmrSection"
 import {WeightGoalSection} from "screens/estimation/sections/WeightGoalSection"
 
 import {EstimationTable} from "screens/estimation/tables/EstimationTable"
@@ -25,15 +25,17 @@ export const EstimationDisplay = () => {
           Body Profile Estimations
         </h1>
 
-        {/* Display sections for BMI, BMR, and Weight Goal */}
+        {/* Display sections for BMI, AMR, and Weight Goal */}
         <BmiSection />
-        <BmrSection />
+        <AmrSection />
         <WeightGoalSection />
 
         {/* Display calorie target slider and estimation table if the goal is not "MAINTAIN" */}
         {weight_goal !== "MAINTAIN" && (
           <>
+            {/* Divider */}
             <div className="my-8 h-1 w-full rounded-full bg-gray-300" />
+
             <CalorieTargetSlider />
             <EstimationTable />
             <ShowMoreButton />
