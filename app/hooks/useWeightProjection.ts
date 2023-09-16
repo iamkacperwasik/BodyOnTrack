@@ -1,6 +1,7 @@
 import {useAtomValue} from "jotai"
 
 import {calorie_target_atom} from "atoms/goal/CalorieTarget"
+import {projection_days_atom} from "atoms/goal/Days"
 import {goal_atom} from "atoms/goal/Goal"
 
 import {weight_atom} from "atoms/body/Weight"
@@ -54,12 +55,12 @@ const calculate_projected_weights = (
 }
 
 /**
- * Get an array of projected weights over a specified number of days.
+ * Custom hook for calculating weight projection over a specified number of days.
  *
- * @param {number} days - The number of days for which to calculate projected weights.
  * @returns {number[]} An array of projected weights for each day.
  */
-export const useWeightProjection = (days: number): number[] => {
+export const useWeightProjection = (): number[] => {
+  const projection_days = useAtomValue(projection_days_atom)
   const initial_weight = useAtomValue(weight_atom)
   const goal = useAtomValue(goal_atom)
   const calories = useAtomValue(calorie_target_atom)
@@ -69,7 +70,7 @@ export const useWeightProjection = (days: number): number[] => {
 
   // Calculate and return the projected weights
   return calculate_projected_weights(
-    days,
+    projection_days,
     initial_weight.value!,
     daily_weight_change
   )
