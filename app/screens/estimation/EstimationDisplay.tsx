@@ -19,7 +19,7 @@ export const EstimationDisplay = () => {
   const weight_goal = useAtomValue(goal_atom)
 
   return (
-    <div className="container mx-auto mt-8 flex max-w-2xl items-baseline justify-between rounded-lg p-4 text-xl text-white">
+    <div className="container relative mx-auto mt-8 flex max-w-2xl items-baseline justify-between rounded-lg p-4 text-xl text-white">
       <div className="w-full max-w-2xl">
         <h1 className="mb-4 text-2xl font-semibold">
           Body Profile Estimations
@@ -44,7 +44,7 @@ export const EstimationDisplay = () => {
       </div>
 
       {/* Display the edit profile button */}
-      <div className="w-max">
+      <div className="absolute right-4 top-4 w-max">
         <EditProfileButton />
       </div>
     </div>
