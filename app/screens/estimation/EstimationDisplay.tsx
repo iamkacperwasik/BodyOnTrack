@@ -13,6 +13,7 @@ import {EstimationTable} from "screens/estimation/EstimationTable"
 import {goal_atom} from "atoms/goal/Goal"
 
 export const EstimationDisplay = () => {
+  // Get the current weight goal from the `goal_atom` Jotai atom
   const weight_goal = useAtomValue(goal_atom)
 
   return (
@@ -22,21 +23,22 @@ export const EstimationDisplay = () => {
           Body Profile Estimations
         </h1>
 
+        {/* Display sections for BMI, BMR, and Weight Goal */}
         <BmiSection />
         <BmrSection />
         <WeightGoalSection />
 
+        {/* Display calorie target slider and estimation table if the goal is not "MAINTAIN" */}
         {weight_goal !== "MAINTAIN" && (
           <>
             <div className="my-8 h-1 w-full rounded-full bg-gray-300" />
-
             <CalorieTargetSlider />
-
             <EstimationTable />
           </>
         )}
       </div>
 
+      {/* Display the edit profile button */}
       <div className="w-max">
         <EditProfileButton />
       </div>

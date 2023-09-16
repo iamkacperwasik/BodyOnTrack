@@ -1,6 +1,7 @@
 import {useEstimationData} from "hooks/useEstimation"
 
 export const EstimationTable = () => {
+  // Fetch estimation data using the useEstimationData hook
   const estimation_data = useEstimationData()
 
   return (

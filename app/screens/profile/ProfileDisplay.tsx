@@ -14,6 +14,7 @@ export const ProfileDisplay = () => {
       <h1 className="mb-4 text-2xl font-semibold">Body Profile</h1>
 
       <form className="space-y-4">
+        {/* Age and Gender inputs */}
         <div className="-mx-2 flex flex-wrap justify-between">
           <div className="w-full px-2 md:w-1/2">
             <AgeInput />
@@ -23,6 +24,7 @@ export const ProfileDisplay = () => {
           </div>
         </div>
 
+        {/* Height and Weight inputs */}
         <div className="-mx-2 flex flex-wrap justify-between">
           <div className="w-full px-2 md:w-1/2">
             <HeightInput />
@@ -32,9 +34,11 @@ export const ProfileDisplay = () => {
           </div>
         </div>
 
+        {/* Activity Level and Goal selects */}
         <ActivityLevelSelect />
         <GoalSelect />
 
+        {/* Save button */}
         <SaveButton />
       </form>
     </div>

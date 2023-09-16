@@ -8,11 +8,13 @@ import {height_atom} from "atoms/body/Height"
 import {weight_atom} from "atoms/body/Weight"
 
 export const BmrSection = () => {
+  // Get the current weight, height, age, and gender from Jotai atoms
   const weight = useAtomValue(weight_atom)
   const height = useAtomValue(height_atom)
   const age = useAtomValue(age_atom)
   const gender = useAtomValue(gender_atom)
 
+  // Calculate the BMR value based on gender, weight, height, and age
   const bmr_value = calculate_bmr(
     gender,
     weight.value!,
