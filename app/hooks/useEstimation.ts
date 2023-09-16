@@ -1,11 +1,12 @@
 import {useAtomValue} from "jotai"
 
+import {calculate_amr} from "formulas/Amr"
 import {calculate_bmi} from "formulas/Bmi"
 import {calculate_bmr} from "formulas/Bmr"
 
 import {useWeightProjection} from "hooks/useWeightProjection"
 
-import {activity_level_atom, get_pal_multiplier} from "atoms/goal/ActivityLevel"
+import {activity_level_atom} from "atoms/goal/ActivityLevel"
 import {calorie_target_atom} from "atoms/goal/CalorieTarget"
 import {WeightGoal, goal_atom} from "atoms/goal/Goal"
 
@@ -17,7 +18,7 @@ type EstimationData = {
   date: string
   weight: string
   bmi: string
-  bmr: string
+  amr: string
   calories: string
 }
 
@@ -34,6 +35,7 @@ const calculate_calorie_target = (
   initial_calorie_target: number
 ): number => {
   const calorie_multiplier = goal === "LOSE_WEIGHT" ? -1 : 1
+
   return initial_calorie_target * calorie_multiplier
 }
 
@@ -55,23 +57,23 @@ export const useEstimationData = (): EstimationData[] => {
     initial_calorie_target
   )
 
-  const estimation_data: EstimationData[] = offsets.map((offset, i) => {
+  const estimation_data = offsets.map((offset, i): EstimationData => {
     const current_date = new Date(start_date)
     current_date.setDate(start_date.getDate() + offset)
-
     const formatted_date = format_date(current_date)
-    const weight: number = weight_projection.at(i)!
-    const bmi: number = calculate_bmi(weight, height!)
-    const bmr: number =
-      calculate_bmr(gender, weight, height!, age!) *
-      get_pal_multiplier(activity_level)
-    const calories: number = bmr + calorie_target
+
+    const weight = weight_projection.at(i)!
+    const bmi = calculate_bmi(weight, height!)
+    const bmr = calculate_bmr(gender, weight, height!, age!)
+    const amr = calculate_amr(bmr, activity_level)
+
+    const calories = amr + calorie_target
 
     return {
       date: formatted_date,
       weight: weight.toFixed(2),
       bmi: bmi.toFixed(2),
-      bmr: bmr.toFixed(2),
+      amr: amr.toFixed(2),
       calories: calories.toFixed(0),
     }
   })
