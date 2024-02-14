@@ -4,12 +4,6 @@
 
 Welcome to our Calorie Calculator and Weight Predictor! We're your trusted companion on your journey towards a healthier, happier you. Our easy-to-use tools empower you to make informed decisions about your diet and fitness goals.
 
-## Getting Started
-
-1. Open a web browser.
-2. Go to [https://body-on-track.kacper.wasik.me](https://body-on-track.kacper.wasik.me).
-3. Start your journey towards a healthier you!
-
 ## Features
 
 - **Calorie Calculator**: Discover the perfect balance of calories for your unique needs. Input your age, gender, weight, height, and activity level, and let our calculator determine your daily calorie target. Whether you're looking to lose, maintain, or gain weight, we've got you covered.
